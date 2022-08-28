@@ -1,9 +1,11 @@
 import classNames from 'classnames/bind';
 import { NavLink } from 'react-router-dom';
+import { Plus } from 'iconoir-react';
 
 import styles from './Sidebar.module.scss';
 import Logo from '~/assets/Logo';
 import { sidebarItem } from '.';
+import SuggestBox from '../SuggestBox';
 
 const cx = classNames.bind(styles);
 
@@ -13,27 +15,35 @@ const Sidebar = () => {
       <div className={cx('logo')}>
         <Logo />
       </div>
-      <div className={cx('main')}>
-        <div className={cx('nav-fixed')}>
-          {sidebarItem
-            .filter((item) => !item.scrollable)
-            .map((item, index) => (
-              <NavLink key={index} to={item.to} className={({ isActive }) => cx('sidebar-item', { active: isActive })}>
-                <span className={cx('sidebar-item-icon')}>{item.icon}</span>
-                <p className={cx('sidebar-item-title')}>{item.title}</p>
-              </NavLink>
-            ))}
+      <div className={cx('nav-fixed')}>
+        {sidebarItem
+          .filter((item) => !item.scrollable)
+          .map((item, index) => (
+            <NavLink key={index} to={item.to} className={({ isActive }) => cx('sidebar-item', { active: isActive })}>
+              <span className={cx('sidebar-item-icon')}>{item.icon}</span>
+              <p className={cx('sidebar-item-title')}>{item.title}</p>
+            </NavLink>
+          ))}
+      </div>
+      <div className={cx('nav-scrollable')}>
+        {sidebarItem
+          .filter((item) => item.scrollable)
+          .map((item, index) => (
+            <NavLink key={index} to={item.to} className={({ isActive }) => cx('sidebar-item', { active: isActive })}>
+              <span className={cx('sidebar-item-icon')}>{item.icon}</span>
+              <p className={cx('sidebar-item-title')}>{item.title}</p>
+            </NavLink>
+          ))}
+        <div className={cx('nav-boxes')}>
+          <SuggestBox title="Đăng nhập để khám phá playlist dành riêng cho bạn" titleBtn="Đăng nhập" />
+          <SuggestBox title="Nghe nhạc không quảng cáo cùng kho nhạc VIP" titleBtn="Nâng cấp VIP" gradient />
         </div>
-        <div className={cx('nav-scrollable')}>
-          {sidebarItem
-            .filter((item) => item.scrollable)
-            .map((item, index) => (
-              <NavLink key={index} to={item.to} className={({ isActive }) => cx('sidebar-item', { active: isActive })}>
-                <span className={cx('sidebar-item-icon')}>{item.icon}</span>
-                <p className={cx('sidebar-item-title')}>{item.title}</p>
-              </NavLink>
-            ))}
-        </div>
+      </div>
+      <div className={cx('nav-create-playlist')}>
+        <span className={cx('create-playlist-icon')}>
+          <Plus />
+        </span>
+        <b className={cx('create-playlist-title')}>Tạo playlist mới</b>
       </div>
     </aside>
   );

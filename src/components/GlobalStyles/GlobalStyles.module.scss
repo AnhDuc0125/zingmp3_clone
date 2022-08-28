@@ -5,15 +5,19 @@
   --main-bg: #170f23;
   --sidebar-bg: #231b2e;
   --dark-gray-bg: #432275;
+  --scrollbar-bg: #dadada;
+
   --gray-text: #8b8791;
   --light-gray-text: #dadada;
   --search-text: #eee;
+
   --purple: #7200a1;
   --light-purple: #393243;
   --dark-purple: #432275;
-  --red: #ff0101;
   --black: #000;
   --white: #fff;
+  --red: #ff0101;
+  --yellow: #ffdb00;
 
   --sidebar-width: 240px;
   --middle-width: calc(1920px - 240px);
@@ -33,7 +37,20 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   color: var(--white);
-  overflow-y: overlay;
+  line-height: 1.5;
+  overflow-y: hidden;
+}
+
+//Scrollbar CSS
+body ::-webkit-scrollbar {
+  width: 4px;
+}
+body ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: var(--scrollbar-bg);
+}
+body ::-webkit-scrollbar-track {
+  border-radius: 4px;
 }
 
 button,
