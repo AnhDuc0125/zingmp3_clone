@@ -9,6 +9,7 @@
   --light-gray-text: #dadada;
   --search-text: #eee;
   --purple: #7200a1;
+  --light-purple: #393243;
   --dark-purple: #432275;
   --red: #ff0101;
   --black: #000;
@@ -19,14 +20,17 @@
   --player-queue-width: 330px;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
 
 body {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
   font-family: 'Inter', sans-serif;
   color: var(--white);
   overflow-y: overlay;

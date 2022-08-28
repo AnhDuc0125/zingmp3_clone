@@ -15,14 +15,42 @@
 .main {
 }
 
+.nav-fixed {
+  padding-bottom: 15px;
+  position: relative;
+
+  &::before {
+    content: '';
+    width: calc(100% - 50px);
+    height: 0.75px;
+    margin: 0 25px;
+    background-color: var(--light-purple);
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
+
+.nav-scrollable {
+  margin-top: 6px;
+}
+
 .sidebar-item {
   padding: 7px 25px;
   display: flex;
   align-items: center;
+  border-left: 3px solid transparent;
+
+  &.active {
+    border-color: var(--purple);
+    background-color: var(--light-purple);
+  }
 }
 
 .sidebar-item-icon {
+  font-size: 1.6rem;
   margin-right: 10px;
+  display: flex;
 }
 
 .sidebar-item-title {

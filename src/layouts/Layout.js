@@ -10,7 +10,10 @@ const Layout = ({ children }) => {
     <div className={cx('wrapper')}>
       <Sidebar />
       <div className={cx('container')}>
-        <div className={cx('main')}>{/* Seach box */}</div>
+        <div className={cx('main')}>
+          {/* Seach box */}
+          {children}
+        </div>
         <div className={cx('player-queue')}></div>
       </div>
     </div>

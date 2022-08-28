@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import styles from './Sidebar.module.scss';
 import Logo from '~/assets/Logo';
@@ -14,12 +14,26 @@ const Sidebar = () => {
         <Logo />
       </div>
       <div className={cx('main')}>
-        {sidebarItem.map((item, index) => (
-          <Link key={index} to={item.to} className={cx('sidebar-item')}>
-            <span className={cx('sidebar-item-icon')}>{item.icon}</span>
-            <p className={cx('sidebar-item-title')}>{item.title}</p>
-          </Link>
-        ))}
+        <div className={cx('nav-fixed')}>
+          {sidebarItem
+            .filter((item) => !item.scrollable)
+            .map((item, index) => (
+              <NavLink key={index} to={item.to} className={({ isActive }) => cx('sidebar-item', { active: isActive })}>
+                <span className={cx('sidebar-item-icon')}>{item.icon}</span>
+                <p className={cx('sidebar-item-title')}>{item.title}</p>
+              </NavLink>
+            ))}
+        </div>
+        <div className={cx('nav-scrollable')}>
+          {sidebarItem
+            .filter((item) => item.scrollable)
+            .map((item, index) => (
+              <NavLink key={index} to={item.to} className={({ isActive }) => cx('sidebar-item', { active: isActive })}>
+                <span className={cx('sidebar-item-icon')}>{item.icon}</span>
+                <p className={cx('sidebar-item-title')}>{item.title}</p>
+              </NavLink>
+            ))}
+        </div>
       </div>
     </aside>
   );
