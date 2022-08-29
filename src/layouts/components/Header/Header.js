@@ -6,7 +6,7 @@ import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
 import SearchBox from './components/SearchBox';
-import Button from '../Button/Button';
+import Button from '../../../components/Button/Button';
 import { actionList } from '.';
 
 const cx = classNames.bind(styles);
@@ -26,21 +26,6 @@ const Header = () => {
         </div>
       </div>
       <div className={cx('actions')}>
-        {/* <Button circled className={cx('theme', 'action-btn')}>
-          <UmbrellaFull />
-        </Button>
-        <Button circled className={cx('vip', 'action-btn')}>
-          <ThreeStars />
-        </Button>
-        <Button circled className={cx('upload', 'action-btn')}>
-          <ShareIos />
-        </Button>
-        <Button circled className={cx('setting', 'action-btn')}>
-          <Settings />
-        </Button>
-        <Button circled className={cx('avatar', 'action-btn')}>
-          <Settings />
-        </Button> */}
         {actionList.map((actionItem, index) => {
           const Icon = actionItem.icon;
           const props = {
@@ -57,7 +42,7 @@ const Header = () => {
             <div key={index}>
               <ToolTip {...props}>
                 <Tippy interactive trigger={'click'} render={actionItem.popper} placement={'bottom-end'}>
-                  <Button circled className={cx('avatar', 'action-btn')}>
+                  <Button circled className={cx('action-btn', actionItem.type)}>
                     <Icon></Icon>
                   </Button>
                 </Tippy>

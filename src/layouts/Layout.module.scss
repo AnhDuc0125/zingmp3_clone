@@ -9,6 +9,7 @@
   height: 100vh;
   background-color: var(--main-bg);
   display: flex;
+  overflow-y: overlay;
 }
 
 .main {

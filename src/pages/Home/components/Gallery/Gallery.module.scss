@@ -1,0 +1,19 @@
+.wrapper {
+  width: 100%;
+  height: var(--gallery-height);
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.gallery-item {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}

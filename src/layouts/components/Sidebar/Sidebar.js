@@ -5,7 +5,7 @@ import { Plus } from 'iconoir-react';
 import styles from './Sidebar.module.scss';
 import Logo from '~/assets/Logo';
 import { sidebarItem } from '.';
-import SuggestBox from '../SuggestBox';
+import SuggestBox from '../../../components/SuggestBox';
 
 const cx = classNames.bind(styles);
 
