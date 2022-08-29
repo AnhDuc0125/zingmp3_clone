@@ -14,10 +14,13 @@ import {
   Megaphone,
   Page,
   ShieldCheck,
+  Rocket,
+  ShoppingBag,
+  LogOut,
 } from 'iconoir-react';
 
 import styles from './Header.module.scss';
-import Popper from '~/components/Popper';
+import Popper, { PopperBlock } from '~/components/Popper';
 
 const cx = classNames.bind(styles);
 
@@ -33,51 +36,94 @@ const settings = [
   { title: 'Chính sách bảo mật', icon: ShieldCheck },
 ];
 
-const themePopper = (attrs) => {};
+const userOptions = [
+  { title: 'Nâng cấp VIP', icon: Rocket },
+  { title: 'Mua code VIP', icon: ShoppingBag },
+  { title: 'Đăng xuất', icon: LogOut, isSeparate: true },
+];
 
-const settingPopper = (attrs) => (
-  <div {...attrs}>
+const defaultPopper = (attrs) => {};
+
+const settingPopper = () => (
+  <div>
     <Popper>
-      <div className={cx('setting-client')}>
+      <PopperBlock>
         {settings
           .filter((item) => item.isClientSetting)
           .map((setting, index) => {
             const Icon = setting.icon;
             return (
-              <div key={index} className={cx('setting-item')}>
-                <span className={cx('setting-icon')}>
+              <div key={index} className={cx('option-item')}>
+                <span className={cx('option-icon')}>
                   <Icon />
                 </span>
                 {setting.title}
               </div>
             );
           })}
-      </div>
-      <div className={cx('setting-core')}>
+      </PopperBlock>
+      <PopperBlock>
         {settings
           .filter((item) => !item.isClientSetting)
           .map((setting, index) => {
             const Icon = setting.icon;
             return (
-              <div key={index} className={cx('setting-item')}>
-                <span className={cx('setting-icon')}>
+              <div key={index} className={cx('option-item')}>
+                <span className={cx('option-icon')}>
                   <Icon />
                 </span>
                 {setting.title}
               </div>
             );
           })}
-      </div>
+      </PopperBlock>
+    </Popper>
+  </div>
+);
+
+const userPopper = () => (
+  <div>
+    <Popper>
+      <PopperBlock>
+        {userOptions
+          .filter((item) => !item.isSeparate)
+          .map((userOption, index) => {
+            const Icon = userOption.icon;
+            return (
+              <div key={index} className={cx('option-item')}>
+                <span className={cx('option-icon')}>
+                  <Icon />
+                </span>
+                {userOption.title}
+              </div>
+            );
+          })}
+      </PopperBlock>
+      <PopperBlock>
+        {userOptions
+          .filter((item) => item.isSeparate)
+          .map((userOption, index) => {
+            const Icon = userOption.icon;
+            return (
+              <div key={index} className={cx('option-item')}>
+                <span className={cx('option-icon')}>
+                  <Icon />
+                </span>
+                {userOption.title}
+              </div>
+            );
+          })}
+      </PopperBlock>
     </Popper>
   </div>
 );
 
 const actionList = [
-  { type: 'theme', popper: themePopper, icon: UmbrellaFull, tooltip: 'Chủ đề' },
-  { type: 'vip', popper: themePopper, icon: ThreeStars, tooltip: 'Nâng cấp VIP' },
-  { type: 'upload', popper: themePopper, icon: ShareIos, tooltip: 'Tải lên' },
+  { type: 'theme', popper: defaultPopper, icon: UmbrellaFull, tooltip: 'Chủ đề' },
+  { type: 'vip', popper: defaultPopper, icon: ThreeStars, tooltip: 'Nâng cấp VIP' },
+  { type: 'upload', popper: defaultPopper, icon: ShareIos, tooltip: 'Tải lên' },
   { type: 'setting', popper: settingPopper, icon: Settings, tooltip: 'Cài đặt' },
-  { type: 'avatar', popper: themePopper, icon: User },
+  { type: 'avatar', popper: userPopper, icon: User },
 ];
 
 export { actionList };

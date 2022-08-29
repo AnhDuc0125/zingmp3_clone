@@ -4,3 +4,13 @@
   border-radius: 8px;
   background-color: var(--dark-purple);
 }
+
+.block {
+  padding-bottom: 10px;
+
+  + .block {
+    padding-top: 10px;
+    padding-bottom: 0;
+    border-top: 1px solid var(--alpha-purple);
+  }
+}

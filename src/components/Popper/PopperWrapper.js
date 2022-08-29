@@ -1,11 +1,16 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 
 import styles from './Popper.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Popper = ({ children }) => {
+const PopperWrapper = ({ children }) => {
   return <div className={cx('wrapper')}>{children}</div>;
 };
 
-export default Popper;
+PopperWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default PopperWrapper;

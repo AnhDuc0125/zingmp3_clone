@@ -43,9 +43,19 @@ const Header = () => {
         </Button> */}
         {actionList.map((actionItem, index) => {
           const Icon = actionItem.icon;
+          const props = {
+            content: actionItem.tooltip,
+            duration: 300,
+            className: cx('tooltip'),
+          };
+
+          if (!actionItem.tooltip) {
+            props.disabled = true;
+          }
+
           return (
             <div key={index}>
-              <ToolTip delay={0} content={actionItem.tooltip} duration={300} className={cx('tooltip')}>
+              <ToolTip {...props}>
                 <Tippy interactive trigger={'click'} render={actionItem.popper} placement={'bottom-end'}>
                   <Button circled className={cx('avatar', 'action-btn')}>
                     <Icon></Icon>
