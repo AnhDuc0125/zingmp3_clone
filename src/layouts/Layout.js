@@ -12,10 +12,10 @@ const Layout = ({ children }) => {
     <div className={cx('wrapper')}>
       <Sidebar />
       <div className={cx('container')}>
-        <div className={cx('main')}>
+        <main className={cx('main')}>
           <Header />
           {children}
-        </div>
+        </main>
         <div className={cx('player-queue')}></div>
       </div>
     </div>

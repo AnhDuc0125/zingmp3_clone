@@ -6,12 +6,16 @@
   --sidebar-bg: #231b2e;
   --dark-gray-bg: #432275;
   --scrollbar-bg: #dadada;
+  --search-box-bg: #2f2739;
 
+  --light-gray-text: #dadada;
   --gray-text: #8b8791;
   --light-gray-text: #dadada;
-  --search-text: #eee;
+  --search-text: #c3c2c4;
+  --disabled-text: #9c8bb6;
 
   --purple: #7200a1;
+  --alpha-purple: #563983;
   --light-purple: #393243;
   --dark-purple: #432275;
   --black: #000;
@@ -22,7 +26,9 @@
   --sidebar-width: 240px;
   --middle-width: calc(1920px - 240px);
   --header-height: 70px;
+  --search-box-width: 540px;
   --player-queue-width: 330px;
+  --main-padding: 59px;
 }
 
 * {
@@ -67,7 +73,7 @@ button {
 }
 
 a {
-  color: var(--white);
+  color: var(--light-gray-text);
   text-decoration: none;
 }
 
