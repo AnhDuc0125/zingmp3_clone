@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import Gallery from './components/Gallery/Gallery';
+import Gallery from './components/Gallery';
 
 import styles from './Home.module.scss';
 
