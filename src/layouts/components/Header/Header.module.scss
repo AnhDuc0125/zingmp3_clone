@@ -39,7 +39,7 @@
   width: 38px !important;
   height: 38px !important;
   color: var(--search-text) !important;
-  background-color: var(--search-box-bg);
+  background-color: var(--dark-gray-bg);
   font-size: 1.5rem;
 }
 
@@ -63,13 +63,4 @@
 .option-icon {
   margin-right: 10px;
   display: flex;
-}
-
-//tooltip css
-.tooltip {
-  height: 25px;
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem !important;
-  transition: 2s;
 }

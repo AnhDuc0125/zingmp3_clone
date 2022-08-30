@@ -31,7 +31,6 @@ const Header = () => {
           const props = {
             content: actionItem.tooltip,
             duration: 300,
-            className: cx('tooltip'),
           };
 
           if (!actionItem.tooltip) {
@@ -41,9 +40,14 @@ const Header = () => {
           return (
             <div key={index}>
               <ToolTip {...props}>
-                <Tippy interactive trigger={'click'} render={actionItem.popper} placement={'bottom-end'}>
+                <Tippy
+                  interactive
+                  trigger={'click'}
+                  render={actionItem.popper}
+                  placement={'bottom-end'}
+                >
                   <Button circled className={cx('action-btn', actionItem.type)}>
-                    <Icon></Icon>
+                    <Icon />
                   </Button>
                 </Tippy>
               </ToolTip>

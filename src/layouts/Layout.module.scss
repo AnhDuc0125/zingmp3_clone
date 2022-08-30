@@ -6,13 +6,20 @@
 
 .inner {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - var(--player-height));
   display: flex;
+  background-color: green;
+}
+
+.footer {
+  width: 100%;
+  height: var(--player-height);
+  background-color: red;
 }
 
 .container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: var(--main-bg);
   display: flex;
   overflow-y: overlay;
@@ -22,10 +29,3 @@
   width: 100%;
   padding: 0 var(--main-padding);
 }
-
-// .player-queue {
-//   width: var(--player-queue-width);
-//   height: 100vh;
-//   border: 1px solid white;
-//   flex-shrink: 0;
-// }

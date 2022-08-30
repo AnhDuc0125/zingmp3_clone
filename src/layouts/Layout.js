@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './Layout.module.scss';
 import Header from '~/layouts/components/Header';
 import Player from './components/Player';
+import PlayerQueue from './components/PlayerQueue';
 
 const cx = classNames.bind(styles);
 
@@ -18,10 +19,12 @@ const Layout = ({ children }) => {
             <Header />
             {children}
           </main>
-          <div className={cx('player-queue')}></div>
         </div>
+        <PlayerQueue />
       </div>
-      <Player />
+      <div className={cx('footer')}>
+        <Player />
+      </div>
     </div>
   );
 };

@@ -4,13 +4,12 @@
 :root {
   --main-bg: #170f23;
   --sidebar-bg: #231b2e;
-  --dark-gray-bg: #432275;
   --scrollbar-bg: #dadada;
-  --search-box-bg: #2f2739;
+  --dark-gray-bg: #2f2739;
+  --action-tab-bg: #6d6875;
 
   --light-gray-text: #dadada;
   --gray-text: #8b8791;
-  --light-gray-text: #dadada;
   --search-text: #c3c2c4;
   --disabled-text: #9c8bb6;
 
@@ -48,7 +47,7 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--white);
   line-height: 1.5;
-  overflow-y: hidden;
+  // overflow-y: hidden;
 }
 
 //Scrollbar CSS
@@ -82,4 +81,15 @@ a {
 
 .wrapper {
   color: var(--white);
+}
+
+//css for tooltip
+[data-tippy-root] {
+  [role='tooltip'] {
+    height: 25px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem !important;
+    transition: 2s;
+  }
 }
