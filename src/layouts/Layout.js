@@ -4,20 +4,24 @@ import PropTypes from 'prop-types';
 
 import styles from './Layout.module.scss';
 import Header from '~/layouts/components/Header';
+import Player from './components/Player';
 
 const cx = classNames.bind(styles);
 
 const Layout = ({ children }) => {
   return (
     <div className={cx('wrapper')}>
-      <Sidebar />
-      <div className={cx('container')}>
-        <main className={cx('main')}>
-          <Header />
-          {children}
-        </main>
-        <div className={cx('player-queue')}></div>
+      <div className={cx('inner')}>
+        <Sidebar />
+        <div className={cx('container')}>
+          <main className={cx('main')}>
+            <Header />
+            {children}
+          </main>
+          <div className={cx('player-queue')}></div>
+        </div>
       </div>
+      <Player />
     </div>
   );
 };

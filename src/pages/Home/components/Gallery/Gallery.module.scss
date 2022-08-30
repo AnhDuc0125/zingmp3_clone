@@ -22,7 +22,7 @@
   opacity: 0;
   transition: opacity 200ms;
   user-select: none;
-  z-index: 5;
+  z-index: 15;
   cursor: pointer;
 
   &.prev-btn {
@@ -40,9 +40,12 @@
 
 .background {
   position: absolute;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   background-color: red;
+  z-index: 5;
 }
 
 .container {
@@ -50,38 +53,35 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   user-select: none;
   position: relative;
 }
 
 .gallery-item {
-  width: calc((100% - 60px) / 3);
-  height: 100%;
+  width: calc((100% - 2 * var(--gallery-item-gap)) / 3);
+  height: auto;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  z-index: 1;
+  z-index: 10;
   position: absolute;
   transition: 1s;
 
   &.pending {
-    left: 50%;
-    transform: translate(-50%);
-    opacity: 0;
+    z-index: 0;
   }
 
   &.first-item {
-    left: 0;
+    transform: translateX(calc(-100% - var(--gallery-item-gap)));
   }
 
   &.last-item {
-    right: 0;
+    transform: translateX(calc(100% + var(--gallery-item-gap)));
   }
 
   &.current-item {
-    right: 50%;
-    transform: translateX(50%);
+    z-index: 10;
   }
 }
 

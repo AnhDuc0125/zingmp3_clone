@@ -8,9 +8,27 @@ import { galleryImg } from '.';
 const cx = classNames.bind(styles);
 
 const Gallery = () => {
+  const [toggle, setToggle] = useState(true);
   const [show, setShow] = useState([0, 1, 2]);
+  const [first, current, last] = useMemo(() => {
+    return show;
+  }, [show]);
+  const nextBtn = useRef();
+
+  //click to set toggle --> reset timer
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      nextBtn.current.click();
+    }, 5000);
+
+    return () => {
+      console.log('cleared');
+      clearInterval(timerId);
+    };
+  }, [toggle]);
 
   const handleShowPrev = () => {
+    setToggle(!toggle);
     setShow((prev) =>
       prev.map((showIndex) => {
         let newValue = showIndex - 1;
@@ -21,6 +39,7 @@ const Gallery = () => {
   };
 
   const handleShowNext = () => {
+    setToggle(!toggle);
     setShow((prev) =>
       prev.map((showIndex) => {
         let newValue = showIndex + 1;
@@ -29,10 +48,6 @@ const Gallery = () => {
       })
     );
   };
-
-  const [first, current, last] = useMemo(() => {
-    return show;
-  }, [show]);
 
   return (
     <div className={cx('wrapper')}>
@@ -63,7 +78,7 @@ const Gallery = () => {
         })}
       </div>
 
-      <span onClick={handleShowNext} className={cx('next-btn', 'controller')}>
+      <span ref={nextBtn} onClick={handleShowNext} className={cx('next-btn', 'controller')}>
         <NavArrowRight />
       </span>
     </div>
