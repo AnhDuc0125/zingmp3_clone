@@ -1,2 +1,106 @@
 .wrapper {
+  width: 100%;
+  height: 56px;
+  padding: 8px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+
+  &:hover,
+  &.active {
+    background-color: var(--light-purple);
+    transition: background-color 200ms 30ms;
+
+    .info {
+      opacity: 1;
+      transition: opacity 200ms 30ms;
+    }
+
+    .play-icon {
+      opacity: 1;
+      transition: opacity 200ms 30ms;
+    }
+
+    .actions {
+      opacity: 1;
+      transition: opacity 200ms 30ms;
+    }
+  }
+
+  &.h-full {
+    height: 100%;
+  }
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+}
+
+.thumb {
+  width: 40px;
+  height: 100%;
+  margin-right: 10px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.play-icon {
+  font-size: 1.2rem;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.info {
+  color: (--white-text);
+  align-self: flex-start;
+  line-height: 1.3;
+  opacity: 0.5;
+  flex: 1;
+}
+
+.name {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.singer {
+  font-size: 1.2rem;
+  margin-top: 3px;
+  font-weight: 500;
+  color: var(--gray-text);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-right: 5px;
+  opacity: 0;
+}
+
+.action-icon {
+  display: flex;
+}
+
+.remove {
+  font-size: 1.2rem;
+}
+
+.other {
+  font-size: 1.8rem;
 }

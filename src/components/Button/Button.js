@@ -10,16 +10,20 @@ const Button = forwardRef(
   (
     {
       children,
+      primary = false,
+      secondary = false,
       small = false,
       large = false,
       outline = false,
       solid = false,
       rounded = false,
       circled = false,
+      squared = false,
       transparent = false,
       offset,
       className,
       onClick,
+      size,
       ...props
     },
     ref
@@ -30,8 +34,11 @@ const Button = forwardRef(
     };
 
     const classes = cx('wrapper', {
+      primary,
+      secondary,
       rounded,
       circled,
+      squared,
       small,
       large,
       outline,
@@ -42,7 +49,12 @@ const Button = forwardRef(
     });
 
     return (
-      <button ref={ref} className={classes} {...methods}>
+      <button
+        ref={ref}
+        className={classes}
+        {...methods}
+        style={size ? { width: size, height: size } : {}}
+      >
         {children}
       </button>
     );
@@ -51,16 +63,20 @@ const Button = forwardRef(
 
 Button.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  primary: PropTypes.bool,
+  secondary: PropTypes.bool,
   small: PropTypes.bool,
   large: PropTypes.bool,
   outline: PropTypes.bool,
   solid: PropTypes.bool,
   rounded: PropTypes.bool,
+  squared: PropTypes.bool,
   circled: PropTypes.bool,
   transparent: PropTypes.bool,
   offset: PropTypes.oneOf(['left', 'right']),
   className: PropTypes.string,
   onClick: PropTypes.func,
+  size: PropTypes.string,
   props: PropTypes.any,
 };
 

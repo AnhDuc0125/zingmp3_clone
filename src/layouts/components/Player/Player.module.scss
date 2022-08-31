@@ -1,5 +1,93 @@
 .wrapper {
   width: 100%;
   height: 100%;
-  background-color: red;
+  padding: 15px 20px;
+  background-color: var(--main-bg);
+  border-top: 1px solid var(--light-purple);
+  display: flex;
+  justify-content: space-between;
+}
+
+.playing-song {
+  width: 250px;
+}
+
+.controller {
+}
+
+.controller-area {
+}
+
+.controller-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.shuffle {
+}
+
+.prev {
+}
+
+.toggle-play {
+  padding: 2px;
+  border: 2px solid var(--white);
+  border-radius: 999px;
+
+  &.playing {
+    .play-btn {
+      display: none;
+    }
+
+    .pause-btn {
+      display: flex;
+    }
+  }
+
+  .pause-btn {
+    display: none;
+  }
+}
+
+.next {
+}
+
+.repeat {
+}
+
+.duration {
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.main {
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mv {
+}
+
+.lyric {
+}
+
+.picture-in-picture {
+}
+
+.volumn {
+}
+
+.main + .sub {
+  padding-left: 10px;
+  border-left: 2px solid var(--light-purple);
+}
+
+.show-playlist {
+  padding: 5px;
 }

@@ -6,6 +6,7 @@ import 'tippy.js/dist/tippy.css';
 
 import styles from './PlayerQueue.module.scss';
 import Button from '~/components/Button/Button';
+import MusicItem from '~/components/MusicItem';
 
 const cx = classNames.bind(styles);
 
@@ -29,11 +30,28 @@ const PlayerQueue = () => {
         <div className={cx('more')}>
           <ToolTip content={'Khác'}>
             <Tippy interactive trigger={'click'} render={() => {}} placement={'bottom-end'}>
-              <Button circled className={cx('action-btn')}>
-                <MoreHoriz />
+              <Button circled className={cx('action-btn', 'more-btn')}>
+                <MoreHoriz fill="white" />
               </Button>
             </Tippy>
           </ToolTip>
+        </div>
+      </div>
+      <div className={cx('body')}>
+        <div className={cx('recently-played')}>
+          {Array(5)
+            .fill(null)
+            .map((item, index) => (
+              <MusicItem key={index} name={'Có Em Chờ'} singer={'MIN'} />
+            ))}
+        </div>
+        <div className={cx('in-queue')}>
+          <h3 className={cx('in-queue-title')}>Tiếp theo</h3>
+          {Array(15)
+            .fill(null)
+            .map((item, index) => (
+              <MusicItem key={index} name={'Có Em Chờ'} singer={'MIN'} />
+            ))}
         </div>
       </div>
     </div>

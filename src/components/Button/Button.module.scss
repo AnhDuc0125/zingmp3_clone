@@ -25,6 +25,14 @@
   }
 }
 
+.primary {
+  background-color: var(--purple);
+}
+
+.secondary {
+  background-color: var(--dark-gray-bg);
+}
+
 .small {
   height: 25px;
   padding: 4px 24px;
@@ -38,6 +46,10 @@
   width: 40px;
   height: 40px;
   padding: 0;
+}
+
+.squared {
+  border-radius: 4px;
 }
 
 .transparent {
