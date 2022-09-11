@@ -3,15 +3,20 @@ import { ArrowLeft, ArrowRight } from 'iconoir-react';
 import Tippy from '@tippyjs/react/headless';
 import ToolTip from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import axios from 'axios';
 
 import styles from './Header.module.scss';
 import SearchBox from './components/SearchBox';
 import Button from '../../../components/Button/Button';
 import { actionList } from '.';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
+  useEffect(() => {
+    axios.get('https://zing-mp3-api.vercel.app/api/home');
+  }, []);
   return (
     <div className={cx('wrapper')}>
       <div className={cx('navigate')}>
