@@ -16,29 +16,33 @@ const Player = () => {
       <div className={cx('controller')}>
         <div className={cx('controller-area')}>
           <div className={cx('controller-inner')}>
-            <Button transparent circled size={'32px'} className={cx('shuffle')}>
-              <Icon.Shuffle fill="white" />
+            <Button transparent circled size={'22px'} className={cx('shuffle')}>
+              <Icon.Shuffle />
             </Button>
-            <Button transparent circled size={'32px'} className={cx('prev')}>
+            <Button transparent circled size={'26px'} className={cx('prev')}>
               <Icon.SkipPrevOutline fill="white" />
             </Button>
             <div className={cx('toggle-play')}>
-              <Button transparent circled size={'32px'} className={cx('play-btn')}>
-                <Icon.PlayOutline fill="white" />
+              <Button transparent circled size={'26px'} className={cx('play-btn')}>
+                <Icon.PlayOutline fill="white" width={'1em'} />
               </Button>
-              <Button transparent circled size={'32px'} className={cx('pause-btn')}>
-                <Icon.PauseOutline fill="white" />
+              <Button transparent circled size={'26px'} className={cx('pause-btn')}>
+                <Icon.PauseOutline fill="white" width={'1em'} />
               </Button>
             </div>
-            <Button transparent circled size={'32px'} className={cx('next')}>
+            <Button transparent circled size={'26px'} className={cx('next')}>
               <Icon.SkipNextOutline fill="white" />
             </Button>
-            <Button transparent circled size={'32px'} className={cx('repeat')}>
+            <Button transparent circled size={'26px'} className={cx('repeat')}>
               <Icon.Repeat />
             </Button>
           </div>
         </div>
-        <div className={cx('duration')}></div>
+        <div className={cx('duration')}>
+          <span className={cx('current-time')}>02:12</span>
+          <input type="range" min="0" max="100" className={cx('duration-bar')} />
+          <span className={cx('total-duration')}>03:57</span>
+        </div>
       </div>
       <div className={cx('actions')}>
         <div className={cx('main')}>
