@@ -38,9 +38,9 @@ const Player = () => {
             </Button>
           </div>
         </div>
-        <div className={cx('duration')}>
+        <div className={cx('process')}>
           <span className={cx('current-time')}>02:12</span>
-          <input type="range" min="0" max="100" className={cx('duration-bar')} />
+          <input type="range" min="0" max="100" className={cx('process-bar')} />
           <span className={cx('total-duration')}>03:57</span>
         </div>
       </div>

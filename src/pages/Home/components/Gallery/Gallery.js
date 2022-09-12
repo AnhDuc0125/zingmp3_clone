@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import { NavArrowLeft, NavArrowRight } from 'iconoir-react';
 
@@ -7,7 +7,7 @@ import { galleryImg } from '.';
 
 const cx = classNames.bind(styles);
 
-const Gallery = () => {
+const Gallery = ({ data = [] }) => {
   const [toggle, setToggle] = useState(true);
   const [show, setShow] = useState([0, 1, 2]);
   const [first, current, last] = useMemo(() => {
@@ -22,7 +22,6 @@ const Gallery = () => {
     }, 5000);
 
     return () => {
-      console.log('cleared');
       clearInterval(timerId);
     };
   }, [toggle]);
@@ -32,7 +31,7 @@ const Gallery = () => {
     setShow((prev) =>
       prev.map((showIndex) => {
         let newValue = showIndex - 1;
-        if (showIndex <= 0) newValue = galleryImg.length - 1;
+        if (showIndex <= 0) newValue = data?.items?.length - 1;
         return newValue;
       })
     );
@@ -43,7 +42,7 @@ const Gallery = () => {
     setShow((prev) =>
       prev.map((showIndex) => {
         let newValue = showIndex + 1;
-        if (showIndex >= galleryImg.length - 1) newValue = 0;
+        if (showIndex >= data?.items?.length - 1) newValue = 0;
         return newValue;
       })
     );
@@ -57,7 +56,29 @@ const Gallery = () => {
 
       <div className={cx('container')}>
         <div className={cx('background')}></div>
-        {galleryImg.map((galleryItem, index) => {
+        {data?.items?.map((item, index) => {
+          const classNameCond = {
+            'first-item': first === index,
+            'current-item': current === index,
+            'last-item': last === index,
+          };
+          return (
+            <div
+              key={item.encodeId}
+              className={cx('gallery-item', {
+                ...classNameCond,
+                pending: ![first, current, last].includes(index),
+              })}
+            >
+              <img
+                src={item.banner}
+                alt={item.title || item.description || ''}
+                className={cx('gallery-img')}
+              />
+            </div>
+          );
+        })}
+        {/* {galleryImg.map((galleryItem, index) => {
           const classNameCond = {
             'first-item': first === index,
             'current-item': current === index,
@@ -75,7 +96,7 @@ const Gallery = () => {
               <img src={galleryItem} alt="" className={cx('gallery-img')} />
             </div>
           );
-        })}
+        })} */}
       </div>
 
       <span ref={nextBtn} onClick={handleShowNext} className={cx('next-btn', 'controller')}>
@@ -85,4 +106,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default memo(Gallery);
