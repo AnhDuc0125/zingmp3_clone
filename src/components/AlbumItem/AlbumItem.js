@@ -6,7 +6,7 @@ import styles from './AlbumItem.module.scss';
 
 const cx = classNames.bind(styles);
 
-const AlbumItem = ({ data, className }) => {
+const AlbumItem = ({ data, desc, className }) => {
   return (
     <div className={cx('wrapper', { [className]: className })}>
       <div className={cx('image')}>

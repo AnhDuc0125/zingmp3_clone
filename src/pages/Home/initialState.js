@@ -3,7 +3,9 @@ const initialState = {
   newDay: {},
   newRelease: {},
   favoriteArtist: {},
-  newSong: {},
+  newSongs: {},
+  weekChart: [],
+  top100: {},
 };
 
 export default initialState;

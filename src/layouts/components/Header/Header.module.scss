@@ -1,14 +1,15 @@
 .wrapper {
-  width: 100%;
   height: var(--header-height);
-  padding: 15px 0;
+  padding: 15px var(--main-padding);
   background-color: var(--main-bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 99;
+  right: 0;
+  left: var(--sidebar-width);
+  z-index: 100;
 }
 
 .navigate {
