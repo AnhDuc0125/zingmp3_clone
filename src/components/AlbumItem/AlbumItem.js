@@ -6,7 +6,7 @@ import styles from './AlbumItem.module.scss';
 
 const cx = classNames.bind(styles);
 
-const AlbumItem = ({ data, desc, className }) => {
+const AlbumItem = ({ data, className }) => {
   return (
     <div className={cx('wrapper', { [className]: className })}>
       <div className={cx('image')}>
@@ -28,7 +28,7 @@ const AlbumItem = ({ data, desc, className }) => {
         <img src={data.thumbnailM} alt="" />
       </div>
       <h5 className={cx('title')}>{data.title}</h5>
-      <p className={cx('desc')}>{data.sortDescription}</p>
+      <p className={cx('desc')}>{data.sortDescription || data.artistsNames}</p>
     </div>
   );
 };

@@ -3,9 +3,13 @@ const initialState = {
   newDay: {},
   newRelease: {},
   favoriteArtist: {},
-  newSongs: {},
+  newSongsEveryDay: {},
   weekChart: [],
   top100: {},
+  newSongs: {},
+  albums: {},
+  xoneCorner: {},
+  events: {},
 };
 
 export default initialState;
