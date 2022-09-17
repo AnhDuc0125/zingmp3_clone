@@ -5,25 +5,17 @@ import { PlayOutline } from 'iconoir-react';
 import request from '~/requests';
 import styles from './ZingChart.module.scss';
 import Button from '~/components/Button/Button';
-import ChartItem from './components/ChartItem/ChartItem';
+import ChartItem from './components/ChartItem/';
+import WeekChart from './components/WeekChart/';
+import useSimpleFetch from '~/hooks/useSimpleFetch';
 
 const cx = classNames.bind(styles);
 
 const ZingChart = () => {
-  const [chart, setChart] = useState([]);
+  const chart = useSimpleFetch('chart/home', {});
+  console.log('ZingChart ~ chart', chart);
   const [show, setShow] = useState(10);
-  console.log('Home ~ chart', chart);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await request.get('chart/home');
-      return response.data;
-    };
-
-    fetchData().then((res) => {
-      setChart((prev) => [...prev, ...res?.data?.RTChart?.items]);
-    });
-  }, []);
   return (
     <main className={cx('wrapper')}>
       <div className={cx('heading')}>
@@ -33,8 +25,8 @@ const ZingChart = () => {
         </Button>
       </div>
       <div className={cx('content')}>
-        {chart &&
-          chart?.map(
+        {chart?.RTChart &&
+          chart?.RTChart?.items?.map(
             (item, index) =>
               index < show && <ChartItem key={item.encodeId} data={item} rank={index + 1} />
           )}
@@ -50,6 +42,9 @@ const ZingChart = () => {
       {/* Bảng xếp hạng tuần */}
       <div className={cx('week-chart')}>
         <h2>Bảng xếp hạng tuần</h2>
+      </div>
+      <div className={cx('week-chart-container')}>
+        <WeekChart />
       </div>
     </main>
   );

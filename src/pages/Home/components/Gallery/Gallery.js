@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import { NavArrowLeft, NavArrowRight } from 'iconoir-react';
 
 import styles from './Gallery.module.scss';
-import { galleryImg } from '.';
 
 const cx = classNames.bind(styles);
 

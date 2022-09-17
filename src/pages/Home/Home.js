@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import classNames from 'classnames/bind';
-import { PlayOutline, Underline } from 'iconoir-react';
+import { PlayOutline } from 'iconoir-react';
 
 import styles from './Home.module.scss';
 import request from '~/requests';
@@ -14,7 +14,7 @@ import reducer from './reducer';
 import ArtistItem from '~/components/ArtistItem';
 import AvatarItem from '~/components/AvatarItem';
 import Button from '~/components/Button';
-import MusicItem from '~/components/MusicItem';
+// import MusicItem from '~/components/MusicItem';
 
 const cx = classNames.bind(styles);
 

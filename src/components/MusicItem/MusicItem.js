@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { PlayOutline, Heart, MoreHoriz } from 'iconoir-react';
 
 import styles from './MusicItem.module.scss';
