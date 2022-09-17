@@ -20,14 +20,17 @@ const getDuration = (baseDuration) => {
   return finalDuration;
 };
 
-const ChartItem = ({ data, rank }) => {
+const ChartItem = ({ data, rank, small }) => {
+  const classes = {
+    small,
+  };
   return (
-    <div className={cx('wrapper')}>
+    <div className={cx('wrapper', { ...classes })}>
       <div className={cx('music')}>
         <div className={cx('rank')}>{rank}</div>
-        <span className={cx('status')}>
+        <h4 className={cx('status')}>
           <Minus />
-        </span>
+        </h4>
         <div className={cx('thumb')}>
           <img src={data.thumbnailM} alt="" />
           <span className={cx('play-icon')}>
@@ -35,7 +38,7 @@ const ChartItem = ({ data, rank }) => {
           </span>
         </div>
         <div className={cx('info')}>
-          <h4 className={cx('name')}>{data.title}</h4>
+          <span className={cx('name')}>{data.title}</span>
           <p className={cx('singer')}>{data.artistsNames}</p>
         </div>
       </div>
