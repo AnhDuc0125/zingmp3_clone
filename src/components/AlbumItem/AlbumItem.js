@@ -27,7 +27,7 @@ const AlbumItem = ({ data, className }) => {
         </div>
         <img src={data.thumbnailM} alt="" />
       </div>
-      <h5 className={cx('title')}>{data.title}</h5>
+      <p className={cx('title')}>{data.title}</p>
       <p className={cx('desc')}>{data.sortDescription || data.artistsNames}</p>
     </div>
   );

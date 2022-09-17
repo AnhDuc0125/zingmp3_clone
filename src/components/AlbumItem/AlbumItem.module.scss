@@ -1,6 +1,7 @@
 .wrapper {
   width: calc(100% / 5);
-  min-height: 290px;
+  min-height: 300px;
+  padding: 0 14px;
 }
 
 .image {
@@ -60,6 +61,7 @@
 }
 
 .title {
+  display: block;
   text-transform: capitalize;
   font-size: 1.4rem;
   font-weight: 700;
