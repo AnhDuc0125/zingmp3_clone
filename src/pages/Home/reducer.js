@@ -5,10 +5,11 @@ import {
   ADD_NEW_SONGS_EVERY_DAY,
   ADD_WEEKCHART,
   ADD_TOP100,
-  ADD_NEW_SONGS,
+  ADD_NEW_RELEASE,
   ADD_ALBUMS,
   ADD_XONE_CORNER,
   ADD_EVENTS,
+  ADD_ALL,
 } from './actions';
 
 const reducer = (state, action) => {
@@ -32,8 +33,8 @@ const reducer = (state, action) => {
     case ADD_TOP100:
       newState = { ...state, top100: action.payload };
       return newState;
-    case ADD_NEW_SONGS:
-      newState = { ...state, newSongs: action.payload };
+    case ADD_NEW_RELEASE:
+      newState = { ...state, newRelease: action.payload };
       return newState;
     case ADD_ALBUMS:
       newState = { ...state, albums: action.payload };
@@ -43,6 +44,9 @@ const reducer = (state, action) => {
       return newState;
     case ADD_EVENTS:
       newState = { ...state, events: action.payload };
+      return newState;
+    case ADD_ALL:
+      newState = { ...state, ...action.payload };
       return newState;
     default:
       break;

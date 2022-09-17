@@ -9,18 +9,7 @@ import Section from '~/components/Section/Section';
 import AlbumItem from '~/components/AlbumItem';
 
 import initialState from './initialState';
-import {
-  ADD_BANNER,
-  ADD_NEW_DAY,
-  ADD_FAV_ARTIST,
-  ADD_NEW_SONGS_EVERY_DAY,
-  ADD_WEEKCHART,
-  ADD_TOP100,
-  ADD_NEW_SONGS,
-  ADD_ALBUMS,
-  ADD_XONE_CORNER,
-  ADD_EVENTS,
-} from './actions';
+import { ADD_ALL } from './actions';
 import reducer from './reducer';
 import ArtistItem from '~/components/ArtistItem';
 import AvatarItem from '~/components/AvatarItem';
@@ -33,52 +22,35 @@ const Home = () => {
   console.log('Home ~ state', state);
 
   useEffect(() => {
-    const getData = async () => {
+    const fetchData = async () => {
       const response = await request.get('home');
       return response.data;
     };
 
-    getData().then((res) => {
-      console.log('getData ~ res', res);
+    const getData = function (res, sectionId, sectionType) {
+      return res?.data?.items?.find(
+        (item) =>
+          (sectionId ? item.sectionId === sectionId : true) && item.sectionType === sectionType
+      );
+    };
+
+    fetchData().then((res) => {
+      const payload = {
+        banner: getData(res, 'hSlider', 'banner') || {},
+        newDay: getData(res, 'hAutoTheme1', 'playlist') || {},
+        newRelease: getData(res, 'hNewrelease', 'newReleaseChart') || {},
+        favoriteArtist: getData(res, 'hMix', 'mix') || {},
+        newSongsEveryDay: getData(res, 'hAutoTheme2', 'playlist') || {},
+        weekChart: getData(res, undefined, 'weekChart') || [],
+        top100: getData(res, 'h100', 'playlist') || {},
+        albums: getData(res, 'hAlbum', 'playlist') || {},
+        xoneCorner: getData(res, 'hXone', 'playlist') || {},
+        events: getData(res, 'hSlider', 'event') || {},
+      };
+
       dispatch({
-        type: ADD_BANNER,
-        payload: res?.data?.items?.find((item) => item.sectionId === 'hSlider') || {},
-      });
-      dispatch({
-        type: ADD_NEW_DAY,
-        payload: res?.data?.items?.find((item) => item.sectionId === 'hAutoTheme1') || {},
-      });
-      dispatch({
-        type: ADD_FAV_ARTIST,
-        payload: res?.data?.items?.find((item) => item.sectionId === 'hMix') || {},
-      });
-      dispatch({
-        type: ADD_NEW_SONGS_EVERY_DAY,
-        payload: res?.data?.items?.find((item) => item.sectionId === 'hAutoTheme2') || {},
-      });
-      dispatch({
-        type: ADD_WEEKCHART,
-        payload: res?.data?.items?.find((item) => item.sectionType === 'weekChart') || [],
-      });
-      dispatch({
-        type: ADD_TOP100,
-        payload: res?.data?.items?.find((item) => item.sectionId === 'h100') || {},
-      });
-      dispatch({
-        type: ADD_NEW_SONGS,
-        payload: res?.data?.items?.find((item) => item.sectionId === 'hNewrelease') || {},
-      });
-      dispatch({
-        type: ADD_ALBUMS,
-        payload: res?.data?.items?.find((item) => item.sectionId === 'hAlbum') || {},
-      });
-      dispatch({
-        type: ADD_XONE_CORNER,
-        payload: res?.data?.items?.find((item) => item.sectionId === 'hXone') || {},
-      });
-      dispatch({
-        type: ADD_EVENTS,
-        payload: res?.data?.items?.find((item) => item.sectionType === 'event') || {},
+        type: ADD_ALL,
+        payload,
       });
     });
   }, []);
@@ -86,10 +58,10 @@ const Home = () => {
     <main className={cx('wrapper')}>
       <Gallery data={state?.banner} />
 
-      {/* Cứ chill thôi */}
+      {/* Giai điệu ký ức */}
       <Section title={state?.newDay?.title}>
         {state?.newDay?.items?.map((item) => (
-          <AlbumItem key={item.encodeId} data={item} className={cx('section-item')} />
+          <AlbumItem key={item.encodeId} data={item} />
         ))}
       </Section>
 
@@ -105,7 +77,7 @@ const Home = () => {
       {/* Nhạc mới mỗi ngày */}
       <Section title={state?.newSongsEveryDay?.title}>
         {state?.newSongsEveryDay?.items?.map((item) => (
-          <AlbumItem key={item.encodeId} data={item} className={cx('section-item')} />
+          <AlbumItem key={item.encodeId} data={item} />
         ))}
       </Section>
 
@@ -120,16 +92,14 @@ const Home = () => {
 
       {/* Top 100 */}
       <Section title={state?.top100?.title}>
-        {state?.top100?.items
-          ?.filter((item, index) => index < 5)
-          .map((item) => (
-            <AlbumItem key={item.encodeId} data={item} className={cx('section-item')} />
-          ))}
+        {state?.top100?.items?.map(
+          (item, index) => index < 5 && <AlbumItem key={item.encodeId} data={item} />
+        )}
       </Section>
 
       {/* Nhạc mới */}
-      <Section flex title={state?.newSongs?.title}>
-        {state?.newSongs?.items
+      <Section flex title={state?.newRelease?.title}>
+        {state?.newRelease?.items
           ?.filter((item, index) => index < 3)
           .map((item, index) => (
             <div key={item.encodeId} className={cx('music-card')}>
@@ -206,7 +176,6 @@ const Home = () => {
             </div>
           ))}
       </Section>
-      <div className={cx('ahihi')}></div>
     </main>
   );
 };

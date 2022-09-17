@@ -6,7 +6,6 @@ const initialState = {
   newSongsEveryDay: {},
   weekChart: [],
   top100: {},
-  newSongs: {},
   albums: {},
   xoneCorner: {},
   events: {},
