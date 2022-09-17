@@ -10,11 +10,7 @@ const MusicItem = ({ name, singer, image, large, heightFull }) => {
   return (
     <div className={cx('wrapper', { large, 'h-full': heightFull })}>
       <div className={cx('thumb')}>
-        <img
-          src="https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_webp/cover/f/e/7/f/fe7f925f7390175be43d28ccdb417354.jpg"
-          alt=""
-          className={cx('image')}
-        />
+        <img src={image} alt="" className={cx('image')} />
         <span className={cx('play-icon')}>
           <PlayOutline fill="white" />
         </span>

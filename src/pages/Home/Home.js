@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import classNames from 'classnames/bind';
-import { PlayOutline } from 'iconoir-react';
+import { PlayOutline, Underline } from 'iconoir-react';
 
 import styles from './Home.module.scss';
 import request from '~/requests';
@@ -13,7 +13,8 @@ import { ADD_ALL } from './actions';
 import reducer from './reducer';
 import ArtistItem from '~/components/ArtistItem';
 import AvatarItem from '~/components/AvatarItem';
-import Button from '~/components/Button/Button';
+import Button from '~/components/Button';
+import MusicItem from '~/components/MusicItem';
 
 const cx = classNames.bind(styles);
 
@@ -38,7 +39,8 @@ const Home = () => {
       const payload = {
         banner: getData(res, 'hSlider', 'banner') || {},
         newDay: getData(res, 'hAutoTheme1', 'playlist') || {},
-        newRelease: getData(res, 'hNewrelease', 'newReleaseChart') || {},
+        newRelease: getData(res, undefined, 'new-release') || {},
+        newSongs: getData(res, 'hNewrelease', 'newReleaseChart') || {},
         favoriteArtist: getData(res, 'hMix', 'mix') || {},
         newSongsEveryDay: getData(res, 'hAutoTheme2', 'playlist') || {},
         weekChart: getData(res, undefined, 'weekChart') || [],
@@ -57,6 +59,28 @@ const Home = () => {
   return (
     <main className={cx('wrapper')}>
       <Gallery data={state?.banner} />
+
+      {/* <Section title={state.newRelease.title}>
+        <div className={cx('pane-container')}>
+          <span className={cx('pane-item')}>bài hát</span>
+          <span className={cx('pane-item')}>album</span>
+        </div>
+        <div className={cx('pane-content')}>
+          <div className={cx('pane-song')}>
+            {state.newRelease?.items[0]?.song?.map((item, index) => {
+              console.log(item);
+              return (
+                <MusicItem
+                  key={item.encodeId}
+                  name={item.title}
+                  singer={item.artistsNames}
+                  image={item.thumbnailM}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </Section> */}
 
       {/* Giai điệu ký ức */}
       <Section title={state?.newDay?.title}>
@@ -98,8 +122,8 @@ const Home = () => {
       </Section>
 
       {/* Nhạc mới */}
-      <Section flex title={state?.newRelease?.title}>
-        {state?.newRelease?.items
+      <Section flex title={state?.newSongs?.title}>
+        {state?.newSongs?.items
           ?.filter((item, index) => index < 3)
           .map((item, index) => (
             <div key={item.encodeId} className={cx('music-card')}>
@@ -127,11 +151,12 @@ const Home = () => {
 
       {/* hAlbum */}
       <Section>
-        {state?.albums?.items
-          ?.filter((item, index) => index < 5)
-          .map((item) => (
-            <AlbumItem key={item.encodeId} data={item} className={cx('section-item')} />
-          ))}
+        {state?.albums?.items?.map(
+          (item, index) =>
+            index < 5 && (
+              <AlbumItem key={item.encodeId} data={item} className={cx('section-item')} />
+            )
+        )}
       </Section>
 
       {/* hXone */}

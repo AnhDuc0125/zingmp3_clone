@@ -1,11 +1,12 @@
 import {
   ADD_BANNER,
   ADD_NEW_DAY,
+  ADD_NEW_RELEASE,
   ADD_FAV_ARTIST,
   ADD_NEW_SONGS_EVERY_DAY,
   ADD_WEEKCHART,
   ADD_TOP100,
-  ADD_NEW_RELEASE,
+  ADD_NEW_SONGS,
   ADD_ALBUMS,
   ADD_XONE_CORNER,
   ADD_EVENTS,
@@ -21,6 +22,9 @@ const reducer = (state, action) => {
     case ADD_NEW_DAY:
       newState = { ...state, newDay: action.payload };
       return newState;
+    case ADD_NEW_RELEASE:
+      newState = { ...state, newRelease: action.payload };
+      return newState;
     case ADD_FAV_ARTIST:
       newState = { ...state, favoriteArtist: action.payload };
       return newState;
@@ -33,8 +37,8 @@ const reducer = (state, action) => {
     case ADD_TOP100:
       newState = { ...state, top100: action.payload };
       return newState;
-    case ADD_NEW_RELEASE:
-      newState = { ...state, newRelease: action.payload };
+    case ADD_NEW_SONGS:
+      newState = { ...state, newSongs: action.payload };
       return newState;
     case ADD_ALBUMS:
       newState = { ...state, albums: action.payload };

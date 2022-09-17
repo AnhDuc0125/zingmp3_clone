@@ -6,9 +6,8 @@ import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
 import SearchBox from './components/SearchBox';
-import Button from '../../../components/Button/Button';
+import Button from '~/components/Button';
 import { actionList } from '.';
-import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 

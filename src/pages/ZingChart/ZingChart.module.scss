@@ -1,0 +1,23 @@
+.wrapper {
+  width: 100%;
+  height: fit-content;
+  margin-top: calc(var(--header-height) + 20px);
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  h1 {
+    font-size: 4rem;
+  }
+}
+
+.show-more-btn {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}

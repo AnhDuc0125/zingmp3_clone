@@ -1,6 +1,7 @@
 const initialState = {
   banner: {},
   newDay: {},
+  newSongs: {},
   newRelease: {},
   favoriteArtist: {},
   newSongsEveryDay: {},
