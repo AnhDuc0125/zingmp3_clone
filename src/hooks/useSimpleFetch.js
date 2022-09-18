@@ -3,10 +3,12 @@ import request from '~/requests';
 
 const useSimpleFetch = (path, initialState = {}) => {
   const [state, setState] = useState(initialState);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await request.get(path);
+      setLoading(false);
       return response.data;
     };
 
@@ -15,7 +17,7 @@ const useSimpleFetch = (path, initialState = {}) => {
     });
   }, [path]);
 
-  return state;
+  return [state, loading];
 };
 
 export default useSimpleFetch;

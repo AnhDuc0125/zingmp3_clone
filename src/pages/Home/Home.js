@@ -14,12 +14,14 @@ import reducer from './reducer';
 import ArtistItem from '~/components/ArtistItem';
 import AvatarItem from '~/components/AvatarItem';
 import Button from '~/components/Button';
-// import MusicItem from '~/components/MusicItem';
+import Skeleton from '~/components/Skeleton';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 const Home = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [loading, setLoading] = useState(true);
   console.log('Home ~ state', state);
 
   useEffect(() => {
@@ -54,153 +56,140 @@ const Home = () => {
         type: ADD_ALL,
         payload,
       });
+
+      setLoading(false);
     });
   }, []);
   return (
     <main className={cx('wrapper')}>
-      <Gallery data={state?.banner} />
+      {loading ? (
+        <Skeleton type={'feed'} />
+      ) : (
+        <div>
+          {/* Gallery */}
+          <Gallery data={state?.banner} />
 
-      {/* <Section title={state.newRelease.title}>
-        <div className={cx('pane-container')}>
-          <span className={cx('pane-item')}>bài hát</span>
-          <span className={cx('pane-item')}>album</span>
-        </div>
-        <div className={cx('pane-content')}>
-          <div className={cx('pane-song')}>
-            {state.newRelease?.items[0]?.song?.map((item, index) => {
-              console.log(item);
-              return (
-                <MusicItem
-                  key={item.encodeId}
-                  name={item.title}
-                  singer={item.artistsNames}
-                  image={item.thumbnailM}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </Section> */}
+          {/* Giai điệu ký ức */}
+          <Section title={state?.newDay?.title}>
+            {state?.newDay?.items?.map((item) => (
+              <AlbumItem key={item.encodeId} data={item} />
+            ))}
+          </Section>
 
-      {/* Giai điệu ký ức */}
-      <Section title={state?.newDay?.title}>
-        {state?.newDay?.items?.map((item) => (
-          <AlbumItem key={item.encodeId} data={item} />
-        ))}
-      </Section>
+          {/* Nghệ sĩ yêu thích */}
+          <Section title={state?.favoriteArtist?.title}>
+            {state?.favoriteArtist?.items
+              ?.filter((item, index) => index < 5)
+              ?.map((item) => (
+                <ArtistItem key={item.encodeId} data={item} className={cx('artist-item')} />
+              ))}
+          </Section>
 
-      {/* Nghệ sĩ yêu thích */}
-      <Section title={state?.favoriteArtist?.title}>
-        {state?.favoriteArtist?.items
-          ?.filter((item, index) => index < 5)
-          ?.map((item) => (
-            <ArtistItem key={item.encodeId} data={item} className={cx('artist-item')} />
-          ))}
-      </Section>
+          {/* Nhạc mới mỗi ngày */}
+          <Section title={state?.newSongsEveryDay?.title}>
+            {state?.newSongsEveryDay?.items?.map((item) => (
+              <AlbumItem key={item.encodeId} data={item} />
+            ))}
+          </Section>
 
-      {/* Nhạc mới mỗi ngày */}
-      <Section title={state?.newSongsEveryDay?.title}>
-        {state?.newSongsEveryDay?.items?.map((item) => (
-          <AlbumItem key={item.encodeId} data={item} />
-        ))}
-      </Section>
-
-      {/* Week Chart */}
-      <Section flex>
-        {state?.weekChart?.items?.map((item, index) => (
-          <div key={index} className={cx('weekChart')}>
-            <img src={item.cover} alt="" />
-          </div>
-        ))}
-      </Section>
-
-      {/* Top 100 */}
-      <Section title={state?.top100?.title}>
-        {state?.top100?.items?.map(
-          (item, index) => index < 5 && <AlbumItem key={item.encodeId} data={item} />
-        )}
-      </Section>
-
-      {/* Nhạc mới */}
-      <Section flex title={state?.newSongs?.title}>
-        {state?.newSongs?.items
-          ?.filter((item, index) => index < 3)
-          .map((item, index) => (
-            <div key={item.encodeId} className={cx('music-card')}>
-              <div className={cx('music-card-img')}>
-                <div className={cx('music-card-overlay')}>
-                  <span className={cx('play-btn')}>
-                    <PlayOutline />
-                  </span>
-                </div>
-                <img src={item.thumbnailM} alt="" />
+          {/* Week Chart */}
+          <Section flex>
+            {state?.weekChart?.items?.map((item, index) => (
+              <div key={index} className={cx('weekChart')}>
+                <img src={item.cover} alt="" />
               </div>
-              <div className={cx('music-card-body')}>
-                <div className={cx('music-card-header')}>
-                  <h3 className={cx('music-card-title')}>{item.title}</h3>
-                  <p className={cx('music-card-singer')}>{item.artistsNames}</p>
-                </div>
-                <div className={cx('music-card-footer')}>
-                  <span className={cx('music-card-rank')}>#{index + 1}</span>
-                  <span className={cx('music-card-date')}>10.03.2003</span>
-                </div>
-              </div>
-            </div>
-          ))}
-      </Section>
+            ))}
+          </Section>
 
-      {/* hAlbum */}
-      <Section>
-        {state?.albums?.items?.map(
-          (item, index) =>
-            index < 5 && (
-              <AlbumItem key={item.encodeId} data={item} className={cx('section-item')} />
-            )
-        )}
-      </Section>
+          {/* Top 100 */}
+          <Section title={state?.top100?.title}>
+            {state?.top100?.items?.map(
+              (item, index) => index < 5 && <AlbumItem key={item.encodeId} data={item} />
+            )}
+          </Section>
 
-      {/* hXone */}
-      <Section title={state?.xoneCorner?.title}>
-        {state?.xoneCorner?.items
-          ?.filter((item, index) => index < 5)
-          .map((item) => (
-            <AlbumItem key={item.encodeId} data={item} className={cx('section-item')} />
-          ))}
-      </Section>
-
-      {/* Sự kiện */}
-      <Section flex title={state?.events?.title}>
-        {state?.events?.items
-          ?.filter((item, index) => index < 3)
-          .map((item) => (
-            <div key={item.encodeId} className={cx('event-card')}>
-              <div className={cx('event-card-header')}>
-                <img src={item.coverHM} alt="" />
-                <div className={cx('event-card-info')}>
-                  <span className={cx('event-card-label')}>{item.label}</span>
-                  <h3 className={cx('event-card-title')}>{item.title}</h3>
-                  <p className={cx('event-card-timestamp')}>11:00 Thứ sáu, 16 tháng 9</p>
-                </div>
-              </div>
-              <div className={cx('event-card-fotter')}>
-                <div className={cx('event-card-care')}>
-                  <p className={cx('event-card-care-title')}>Lượt quan tâm</p>
-                  <div className={cx('event-card-care-list')}>
-                    <span className={cx('event-card-care-number')}>
-                      +{item.totalFollow - item.followers.length}
-                    </span>
-                    {item.followers.map((follower) => (
-                      <AvatarItem key={follower.id} small img={follower.avatar} />
-                    ))}
+          {/* Nhạc mới */}
+          <Section flex title={state?.newSongs?.title}>
+            {state?.newSongs?.items
+              ?.filter((item, index) => index < 3)
+              .map((item, index) => (
+                <div key={item.encodeId} className={cx('music-card')}>
+                  <div className={cx('music-card-img')}>
+                    <div className={cx('music-card-overlay')}>
+                      <span className={cx('play-btn')}>
+                        <PlayOutline />
+                      </span>
+                    </div>
+                    <img src={item.thumbnailM} alt="" />
+                  </div>
+                  <div className={cx('music-card-body')}>
+                    <div className={cx('music-card-header')}>
+                      <h3 className={cx('music-card-title')}>{item.title}</h3>
+                      <p className={cx('music-card-singer')}>{item.artistsNames}</p>
+                    </div>
+                    <div className={cx('music-card-footer')}>
+                      <span className={cx('music-card-rank')}>#{index + 1}</span>
+                      <span className={cx('music-card-date')}>10.03.2003</span>
+                    </div>
                   </div>
                 </div>
-                <Button large solid>
-                  QUAN TÂM
-                </Button>
-              </div>
-            </div>
-          ))}
-      </Section>
+              ))}
+          </Section>
+
+          {/* hAlbum */}
+          <Section>
+            {state?.albums?.items?.map(
+              (item, index) =>
+                index < 5 && (
+                  <AlbumItem key={item.encodeId} data={item} className={cx('section-item')} />
+                )
+            )}
+          </Section>
+
+          {/* hXone */}
+          <Section title={state?.xoneCorner?.title}>
+            {state?.xoneCorner?.items
+              ?.filter((item, index) => index < 5)
+              .map((item) => (
+                <AlbumItem key={item.encodeId} data={item} className={cx('section-item')} />
+              ))}
+          </Section>
+
+          {/* Sự kiện */}
+          <Section flex title={state?.events?.title}>
+            {state?.events?.items
+              ?.filter((item, index) => index < 3)
+              .map((item) => (
+                <div key={item.encodeId} className={cx('event-card')}>
+                  <div className={cx('event-card-header')}>
+                    <img src={item.coverHM} alt="" />
+                    <div className={cx('event-card-info')}>
+                      <span className={cx('event-card-label')}>{item.label}</span>
+                      <h3 className={cx('event-card-title')}>{item.title}</h3>
+                      <p className={cx('event-card-timestamp')}>11:00 Thứ sáu, 16 tháng 9</p>
+                    </div>
+                  </div>
+                  <div className={cx('event-card-fotter')}>
+                    <div className={cx('event-card-care')}>
+                      <p className={cx('event-card-care-title')}>Lượt quan tâm</p>
+                      <div className={cx('event-card-care-list')}>
+                        <span className={cx('event-card-care-number')}>
+                          +{item.totalFollow - item.followers.length}
+                        </span>
+                        {item.followers.map((follower) => (
+                          <AvatarItem key={follower.id} small img={follower.avatar} />
+                        ))}
+                      </div>
+                    </div>
+                    <Button large solid>
+                      QUAN TÂM
+                    </Button>
+                  </div>
+                </div>
+              ))}
+          </Section>
+        </div>
+      )}
     </main>
   );
 };

@@ -16,8 +16,6 @@ const WeekChartItem = ({ data }) => {
     { code: 'korea', title: 'K-Pop' },
   ];
 
-  console.log('WeekChartItem ~ data', data);
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('heading')}>
@@ -28,7 +26,8 @@ const WeekChartItem = ({ data }) => {
       </div>
       <div className={cx('content')}>
         {data?.items?.map(
-          (item, index) => index < SHOW_NUMBER && <ChartItem small data={item} rank={index + 1} />
+          (item, index) =>
+            index < SHOW_NUMBER && <ChartItem key={index} small data={item} rank={index + 1} />
         )}
       </div>
       <div className={cx('footer')}>

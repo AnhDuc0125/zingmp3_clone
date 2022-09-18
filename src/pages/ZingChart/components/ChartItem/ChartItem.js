@@ -32,7 +32,7 @@ const ChartItem = ({ data, rank, small }) => {
           <Minus />
         </h4>
         <div className={cx('thumb')}>
-          <img src={data.thumbnailM} alt="" />
+          <img src={data?.thumbnailM} alt="" />
           <span className={cx('play-icon')}>
             <PlayOutline fill="white" color="white" />
           </span>
@@ -42,7 +42,7 @@ const ChartItem = ({ data, rank, small }) => {
           <p className={cx('singer')}>{data.artistsNames}</p>
         </div>
       </div>
-      <div className={cx('album')}>{data.album.title}</div>
+      <div className={cx('album')}>{data.album?.title}</div>
       <div className={cx('duration')}>{getDuration(data.duration)}</div>
     </div>
   );
