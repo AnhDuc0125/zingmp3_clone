@@ -1,0 +1,7 @@
+.wrapper {
+  width: 100%;
+  height: fit-content;
+  margin-top: calc(var(--header-height) + 20px);
+  overflow-y: overlay;
+  overflow-x: hidden;
+}

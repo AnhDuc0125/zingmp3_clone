@@ -1,10 +1,11 @@
 import classNames from 'classnames/bind';
 
 import styles from './Section.module.scss';
+import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
-const Section = ({ title, children, flex, wrap, grid }) => {
+const Section = ({ title, children, flex, wrap, grid, onClick }) => {
   const classes = {
     flex,
     wrap,
@@ -14,6 +15,13 @@ const Section = ({ title, children, flex, wrap, grid }) => {
     <div className={cx('wrapper')}>
       {title && <h3 className={cx('title')}>{title}</h3>}
       <div className={cx('container', { ...classes })}>{children}</div>
+      {onClick && (
+        <div className={cx('footer-button')}>
+          <Button outline transparent center fontSmall onClick={onClick}>
+            TẤT CẢ
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

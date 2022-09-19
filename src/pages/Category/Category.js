@@ -1,26 +1,53 @@
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './Category.module.scss';
 import Section from '~/components/Section';
 import useSimpleFetch from '~/hooks/useSimpleFetch';
 import CategoryItem from '~/components/CategoryItem';
+import AlbumItem from '~/components/AlbumItem';
 
 const cx = classNames.bind(styles);
 
 const Category = () => {
+  const [show, setShow] = useState(8);
   const [categories, loading] = useSimpleFetch('category', {});
-  console.log('Category ~ categories', categories);
+
   return (
     <main className={cx('wrapper')}>
+      {/* Banner */}
       <div className={cx('banner')}>
-        {categories.banners && <img src={categories?.banners[0]?.cover} alt="" />}
+        {categories.banners && (
+          <img
+            src={categories?.banners[Math.floor(Math.random() * categories?.banners.length)]?.cover}
+            alt=""
+          />
+        )}
       </div>
 
-      <Section grid title={'Tâm trạng và hoạt động'}>
-        {categories?.topic?.map((item) => (
-          <CategoryItem />
+      {/* Tâm trạng và hoạt động */}
+      <Section grid title={'Tâm trạng và hoạt động'} onClick={() => setShow(16)}>
+        {categories?.topic?.map(
+          (item, index) =>
+            index < show && <CategoryItem key={item.encodeId} type={'activity'} data={item} />
+        )}
+      </Section>
+
+      {/* Quốc gia */}
+      <Section flex title={'Quốc gia'}>
+        {categories?.nations?.map((item) => (
+          <CategoryItem center key={item.encodeId} data={item} />
         ))}
       </Section>
+
+      {/* Album lists */}
+      {categories?.genre?.map((category) => (
+        <Section key={category.encodeId} title={category.title}>
+          {category?.playlists?.map(
+            (playlist, index) => index < 5 && <AlbumItem key={playlist.encodeId} data={playlist} />
+          )}
+        </Section>
+      ))}
     </main>
   );
 };

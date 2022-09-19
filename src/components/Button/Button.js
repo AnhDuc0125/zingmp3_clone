@@ -21,9 +21,11 @@ const Button = forwardRef(
       squared = false,
       transparent = false,
       offset,
+      fontSmall,
       className,
       onClick,
       size,
+      center,
       ...props
     },
     ref
@@ -43,7 +45,9 @@ const Button = forwardRef(
       large,
       outline,
       solid,
+      fontSmall,
       transparent,
+      center,
       [className]: className,
       [offset]: offset,
     });

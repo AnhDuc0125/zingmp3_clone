@@ -5,6 +5,7 @@ import Radio from '~/pages/Radio';
 import Following from '~/pages/Following';
 import NewRelease from '~/pages/NewRelease';
 import Category from '~/pages/Category';
+import Top100 from '~/pages/Top100';
 import configs from '~/configs';
 
 const routes = [
@@ -15,6 +16,7 @@ const routes = [
   { path: configs.routes.following, page: Following },
   { path: configs.routes.newRelease, page: NewRelease },
   { path: configs.routes.category, page: Category },
+  { path: configs.routes.top100, page: Top100 },
 ];
 
 export default routes;

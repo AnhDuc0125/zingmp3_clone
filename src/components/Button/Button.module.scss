@@ -11,6 +11,10 @@
   justify-content: center;
   transition: 200ms;
 
+  &.center {
+    margin: 0 auto;
+  }
+
   &.outline {
     background-color: var(--dark-purple);
     border-color: currentColor;
@@ -62,4 +66,8 @@
 
 .right {
   justify-content: flex-end;
+}
+
+.fontSmall {
+  font-size: 1.2rem;
 }
