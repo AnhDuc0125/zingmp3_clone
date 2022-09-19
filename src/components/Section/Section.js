@@ -5,16 +5,23 @@ import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
-const Section = ({ title, children, flex, wrap, grid, onClick }) => {
+const Section = ({ title, children, flex, wrap, grid, cols = 4, onClick }) => {
   const classes = {
     flex,
     wrap,
     grid,
   };
+
+  const styles = {
+    gridTemplateColumns: `repeat(${cols}, 1fr)`,
+  };
+
   return (
     <div className={cx('wrapper')}>
       {title && <h3 className={cx('title')}>{title}</h3>}
-      <div className={cx('container', { ...classes })}>{children}</div>
+      <div className={cx('container', { ...classes })} style={{ ...styles }}>
+        {children}
+      </div>
       {onClick && (
         <div className={cx('footer-button')}>
           <Button outline transparent center fontSmall onClick={onClick}>

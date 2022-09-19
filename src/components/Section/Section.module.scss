@@ -34,6 +34,8 @@
 }
 
 .container {
+  padding: 0 14px;
+  gap: 28px;
   margin-left: -14px;
   display: flex;
   align-items: center;
@@ -55,7 +57,6 @@
 .grid {
   padding: 0 14px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 28px;
 
   > * {

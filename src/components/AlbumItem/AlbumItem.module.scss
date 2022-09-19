@@ -1,7 +1,7 @@
 .wrapper {
   width: calc(100% / 5);
   min-height: 300px;
-  padding: 0 14px;
+  // padding: 0 14px;
 }
 
 .image {
@@ -60,9 +60,11 @@
   font-weight: 700;
   margin: 8px 0 4px;
   transition: 200ms;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   cursor: pointer;
 
   &:hover {

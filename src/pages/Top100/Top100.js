@@ -4,6 +4,7 @@ import styles from './Top100.module.scss';
 import useSimpleFetch from '~/hooks/useSimpleFetch';
 import Section from '~/components/Section';
 import AlbumItem from '~/components/AlbumItem';
+import Skeleton from '~/components/Skeleton';
 
 const cx = classNames.bind(styles);
 
@@ -16,14 +17,20 @@ const Top100 = () => {
 
   return (
     <div className={cx('wrapper')}>
-      {/* Album lists */}
-      {top100.map((top100Item) => (
-        <Section grid key={top100Item.genre.name} title={top100Item.title}>
-          {top100Item?.items?.map((playlist, index) => (
-            <AlbumItem key={playlist.encodeId} data={playlist} />
+      {loading ? (
+        <Skeleton type={'top100'} />
+      ) : (
+        <div>
+          {/* Album lists */}
+          {top100.map((top100Item) => (
+            <Section grid cols={5} key={top100Item.genre.name} title={top100Item.title}>
+              {top100Item?.items?.map((playlist, index) => (
+                <AlbumItem key={playlist.encodeId} data={playlist} />
+              ))}
+            </Section>
           ))}
-        </Section>
-      ))}
+        </div>
+      )}
     </div>
   );
 };
