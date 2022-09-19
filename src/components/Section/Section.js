@@ -4,9 +4,11 @@ import styles from './Section.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Section = ({ title, children, flex }) => {
+const Section = ({ title, children, flex, wrap, grid }) => {
   const classes = {
     flex,
+    wrap,
+    grid,
   };
   return (
     <div className={cx('wrapper')}>

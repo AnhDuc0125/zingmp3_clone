@@ -4,6 +4,7 @@ import ZingChart from '~/pages/ZingChart';
 import Radio from '~/pages/Radio';
 import Following from '~/pages/Following';
 import NewRelease from '~/pages/NewRelease';
+import Category from '~/pages/Category';
 import configs from '~/configs';
 
 const routes = [
@@ -13,6 +14,7 @@ const routes = [
   { path: configs.routes.radio, page: Radio },
   { path: configs.routes.following, page: Following },
   { path: configs.routes.newRelease, page: NewRelease },
+  { path: configs.routes.category, page: Category },
 ];
 
 export default routes;
