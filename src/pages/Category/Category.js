@@ -7,6 +7,7 @@ import useSimpleFetch from '~/hooks/useSimpleFetch';
 import CategoryItem from '~/components/CategoryItem';
 import AlbumItem from '~/components/AlbumItem';
 import Skeleton from '~/components/Skeleton';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -23,7 +24,7 @@ const Category = () => {
           {/* Banner */}
           <div className={cx('banner')}>
             {categories.banners && (
-              <img
+              <Image
                 src={
                   categories?.banners[Math.floor(Math.random() * categories?.banners.length)]?.cover
                 }

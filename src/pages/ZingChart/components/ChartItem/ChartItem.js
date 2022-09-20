@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import { Minus, PlayOutline } from 'iconoir-react';
+import Image from '~/components/Image';
 
 import styles from './ChartItem.module.scss';
 
@@ -32,7 +33,7 @@ const ChartItem = ({ data, rank, small }) => {
           <Minus />
         </h4>
         <div className={cx('thumb')}>
-          <img src={data?.thumbnailM} alt="" />
+          <Image src={data?.thumbnailM} alt="" />
           <span className={cx('play-icon')}>
             <PlayOutline fill="white" color="white" />
           </span>

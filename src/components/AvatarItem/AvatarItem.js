@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import styles from './AvatarItem.module.scss';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -10,7 +11,7 @@ const AvatarItem = ({ img, small }) => {
   };
   return (
     <div className={cx('wrapper', { ...classes })}>
-      <img src={img} alt="" />
+      <Image src={img} alt="" />
     </div>
   );
 };

@@ -231,3 +231,41 @@
     margin-bottom: 15px;
   }
 }
+
+.radio-wrapper {
+  .radio {
+  }
+
+  .radio-title {
+  }
+
+  .radio-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .radio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .radio-item-thumb {
+    width: 145px;
+    height: 145px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .radio-item-title {
+    width: 60%;
+    height: 15px;
+    margin-bottom: 10px;
+  }
+
+  .radio-item-desc {
+    width: 80%;
+    height: 15px;
+  }
+}

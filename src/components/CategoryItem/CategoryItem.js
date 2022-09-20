@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import styles from './CategoryItem.module.scss';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -10,14 +11,14 @@ const CategoryItem = ({ data, type, center }) => {
   };
   return (
     <div className={cx('wrapper', { ...classes })}>
-      <img src={data?.thumbnail} alt={data.title} />
+      <Image src={data?.thumbnail} alt={data.title} />
       <div className={cx('body')}>
         <h3 className={cx('title')}>{data?.title}</h3>
         {type === 'activity' && (
           <div className={cx('container')}>
             {data?.playlists?.map((item) => (
               <div key={item.encodeId} className={cx('item')}>
-                <img src={item?.thumbnailM} alt={item?.title} />
+                <Image src={item?.thumbnailM} alt={item?.title} />
               </div>
             ))}
           </div>

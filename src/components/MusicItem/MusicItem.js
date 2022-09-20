@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { PlayOutline, Heart, MoreHoriz } from 'iconoir-react';
 
 import styles from './MusicItem.module.scss';
+import Image from '../Image';
 
 const cx = classNames.bind(styles);
 
@@ -10,7 +11,7 @@ const MusicItem = ({ name, singer, image, large, heightFull }) => {
   return (
     <div className={cx('wrapper', { large, 'h-full': heightFull })}>
       <div className={cx('thumb')}>
-        <img src={image} alt="" className={cx('image')} />
+        <Image src={image} alt="" className={cx('image')} />
         <span className={cx('play-icon')}>
           <PlayOutline fill="white" />
         </span>

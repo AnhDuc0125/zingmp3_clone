@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { NavArrowLeft, NavArrowRight } from 'iconoir-react';
 
 import styles from './Gallery.module.scss';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -69,7 +70,7 @@ const Gallery = ({ data = [] }) => {
                 pending: ![first, current, last].includes(index),
               })}
             >
-              <img
+              <Image
                 src={item.banner}
                 alt={item.title || item.description || ''}
                 className={cx('gallery-img')}
@@ -92,7 +93,7 @@ const Gallery = ({ data = [] }) => {
                 pending: ![first, current, last].includes(index),
               })}
             >
-              <img src={galleryItem} alt="" className={cx('gallery-img')} />
+              <Image src={galleryItem} alt="" className={cx('gallery-img')} />
             </div>
           );
         })} */}

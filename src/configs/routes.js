@@ -9,6 +9,7 @@ const routes = {
   top100: '/top100',
   musicVideo: '/the-loai-video',
   album: '/album/:id',
+  artist: '/artist/:alias',
 };
 
 export default routes;

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ToolTip from '@tippyjs/react/';
 
 import styles from './Album.module.scss';
@@ -9,13 +9,14 @@ import { Heart, MoreHoriz, PlayOutline } from 'iconoir-react';
 import ChartItem from '../ZingChart/components/ChartItem';
 import { getCompactNum, getDate } from '~/utils';
 import Skeleton from '~/components/Skeleton';
+import Image from '~/components/Image';
+import ArtistLink from '~/components/ArtistLink';
 
 const cx = classNames.bind(styles);
 
 const Album = () => {
   const { id } = useParams();
   const [album, loading] = useSimpleFetch(`playlist/${id}`);
-  console.log(getDate(album?.contentLastUpdate));
   console.log(album);
   return (
     <div className={cx('wrapper')}>
@@ -25,7 +26,7 @@ const Album = () => {
         <>
           <div className={cx('album-info')}>
             <div className={cx('thumb')}>
-              <img src={album?.thumbnailM} alt={album?.title} />
+              <Image src={album?.thumbnailM} alt={album?.title} />
               <div className={cx('overlay')}>
                 <span className={cx('play-btn')}>
                   <PlayOutline fill="white" />
@@ -37,7 +38,13 @@ const Album = () => {
               <p className={cx('updated-time')}>
                 Cập nhật: {album.contentLastUpdate && getDate(album?.contentLastUpdate)}
               </p>
-              <div className={cx('artist-links')}>Lyn, DAVICHI, Ailee, TAEYEON</div>
+              <div className={cx('artist-links')}>
+                {album?.artists?.map((artist) => (
+                  <ArtistLink key={artist.id} to={`/artist/${artist.alias}`}>
+                    {artist.name}
+                  </ArtistLink>
+                ))}
+              </div>
               <p className={cx('favorites')}>
                 {album.like && getCompactNum(album?.like)} người yêu thích
               </p>
@@ -62,9 +69,11 @@ const Album = () => {
             </div>
           </div>
           <div className={cx('album-songs')}>
-            <div className={cx('heading')}>
-              <span className={cx('heading-text')}>Lời tựa</span> {album?.description}
-            </div>
+            {album.description && (
+              <div className={cx('heading')}>
+                <span className={cx('heading-text')}>Lời tựa</span> {album?.description}
+              </div>
+            )}
             <div className={cx('container')}>
               {album?.song?.items?.map((item) => (
                 <ChartItem key={item.encodeId} data={item} />

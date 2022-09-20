@@ -16,6 +16,7 @@ import AvatarItem from '~/components/AvatarItem';
 import Button from '~/components/Button';
 import Skeleton from '~/components/Skeleton';
 import { useState } from 'react';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -96,7 +97,7 @@ const Home = () => {
           <Section flex>
             {state?.weekChart?.items?.map((item, index) => (
               <div key={index} className={cx('weekChart')}>
-                <img src={item.cover} alt="" />
+                <Image src={item.cover} alt="" />
               </div>
             ))}
           </Section>
@@ -120,7 +121,7 @@ const Home = () => {
                         <PlayOutline />
                       </span>
                     </div>
-                    <img src={item.thumbnailM} alt="" />
+                    <Image src={item.thumbnailM} alt="" />
                   </div>
                   <div className={cx('music-card-body')}>
                     <div className={cx('music-card-header')}>
@@ -162,7 +163,7 @@ const Home = () => {
               .map((item) => (
                 <div key={item.encodeId} className={cx('event-card')}>
                   <div className={cx('event-card-header')}>
-                    <img src={item.coverHM} alt="" />
+                    <Image src={item.coverHM} alt="" />
                     <div className={cx('event-card-info')}>
                       <span className={cx('event-card-label')}>{item.label}</span>
                       <h3 className={cx('event-card-title')}>{item.title}</h3>

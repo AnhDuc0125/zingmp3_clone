@@ -4,6 +4,7 @@ import ToolTip from '@tippyjs/react/';
 
 import styles from './AlbumItem.module.scss';
 import { Link } from 'react-router-dom';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -28,7 +29,7 @@ const AlbumItem = ({ data, className, overlay = true }) => {
             </ToolTip>
           </div>
         )}
-        <img src={data.thumbnailM} alt="" />
+        <Image src={data.thumbnailM} alt="" />
       </div>
       <p className={cx('title')}>{data.title}</p>
       <p className={cx('desc')}>{data.sortDescription || data.artistsNames}</p>

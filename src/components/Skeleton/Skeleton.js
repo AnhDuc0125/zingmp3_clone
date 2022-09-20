@@ -196,6 +196,52 @@ const Skeletion = ({ type }) => {
     </div>
   );
 
+  const RadioSkeleton = () => (
+    <div className={cx('radio-wrapper')}>
+      {/* Radio Item */}
+      <div className={cx('radio')}>
+        <div className={cx('radio-content')}>
+          {Array(6)
+            .fill()
+            .map((item, index) => (
+              <div key={index} className={cx('radio-item')}>
+                <div className={cx('radio-item-thumb')}>
+                  <SkeletonEffect />
+                </div>
+                <div className={cx('radio-item-title')}>
+                  <SkeletonEffect />
+                </div>
+                <div className={cx('radio-item-desc')}>
+                  <SkeletonEffect />
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+
+      {/* Podcast Item */}
+      <div className={cx('section')}>
+        <div className={cx('section-title')}>
+          <SkeletonEffect />
+        </div>
+        <div className={cx('section-content')}>
+          {Array(COUNT_ITEM)
+            .fill()
+            .map((item, index) => (
+              <div key={index} className={cx('section-item')}>
+                <div className={cx('section-item-header')}>
+                  <SkeletonEffect />
+                </div>
+                <div className={cx('section-item-title')}>
+                  <SkeletonEffect />
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div>
       {type === 'feed' && <FeedSkeleton />}
@@ -203,6 +249,7 @@ const Skeletion = ({ type }) => {
       {type === 'category' && <CategorySkeleton />}
       {type === 'top100' && <Top100Skeleton />}
       {type === 'album' && <AlbumSkeleton />}
+      {type === 'radio' && <RadioSkeleton />}
     </div>
   );
 };
