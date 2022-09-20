@@ -6,6 +6,7 @@ import Following from '~/pages/Following';
 import NewRelease from '~/pages/NewRelease';
 import Category from '~/pages/Category';
 import Top100 from '~/pages/Top100';
+import Album from '~/pages/Album';
 import configs from '~/configs';
 
 const routes = [
@@ -17,6 +18,7 @@ const routes = [
   { path: configs.routes.newRelease, page: NewRelease },
   { path: configs.routes.category, page: Category },
   { path: configs.routes.top100, page: Top100 },
+  { path: configs.routes.album, page: Album },
 ];
 
 export default routes;

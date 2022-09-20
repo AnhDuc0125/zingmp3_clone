@@ -8,6 +8,7 @@ const routes = {
   category: '/hub',
   top100: '/top100',
   musicVideo: '/the-loai-video',
+  album: '/album/:id',
 };
 
 export default routes;
