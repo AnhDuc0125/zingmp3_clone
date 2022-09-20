@@ -69,91 +69,91 @@
 }
 
 .chart-wrapper {
-  .chart-title {
-    width: 250px;
+}
+.chart-title {
+  width: 250px;
+  height: 40px;
+  margin-bottom: 40px;
+}
+
+.chart-container {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.music {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+
+  .rank {
+    width: 60px;
+  }
+
+  .status {
+    margin-right: 15px;
+    display: flex;
+  }
+
+  .thumb {
+    width: 40px;
     height: 40px;
-    margin-bottom: 40px;
+    flex-shrink: 0;
   }
 
-  .chart-container {
+  .info {
     width: 100%;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    height: 100%;
+    align-self: flex-start;
   }
 
-  .music {
-    width: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
+  .name {
+    height: 15px;
+  }
 
-    .rank {
-      width: 60px;
-    }
+  .singer {
+    width: 80%;
+    height: 10px;
+    margin-top: 5px;
+  }
+}
 
-    .status {
-      margin-right: 15px;
-      display: flex;
-    }
+.album {
+  width: 200px;
+  height: 20px;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  text-align: left;
+}
 
-    .thumb {
-      width: 40px;
-      height: 40px;
-      flex-shrink: 0;
-    }
+.duration {
+  width: 10%;
+  height: 20px;
+}
 
-    .info {
-      width: 100%;
-      height: 100%;
-      align-self: flex-start;
-    }
+.small {
+  height: 60px;
+  padding: 10px 5px;
 
-    .name {
-      height: 15px;
-    }
-
-    .singer {
-      width: 80%;
-      height: 10px;
-      margin-top: 5px;
-    }
+  .status {
+    margin-right: 10px;
   }
 
   .album {
-    width: 200px;
-    height: 20px;
-    font-size: 1.2rem;
-    text-transform: capitalize;
-    text-align: left;
+    display: none;
+  }
+
+  .rank {
+    width: 30px;
   }
 
   .duration {
-    width: 10%;
-    height: 20px;
-  }
-
-  .small {
-    height: 60px;
-    padding: 10px 5px;
-
-    .status {
-      margin-right: 10px;
-    }
-
-    .album {
-      display: none;
-    }
-
-    .rank {
-      width: 30px;
-    }
-
-    .duration {
-      width: 15%;
-    }
+    width: 15%;
   }
 }
 
@@ -179,5 +179,55 @@
   .activity-item {
     width: 100%;
     height: 120px;
+  }
+}
+
+.album-wrapper {
+  display: flex;
+  gap: 30px;
+
+  .album-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .album-thumb {
+      width: 300px;
+      height: 300px;
+    }
+
+    .album-title {
+      width: 200px;
+      height: 25px;
+      margin-top: 10px;
+    }
+
+    .album-desc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .album-desc-item:nth-child(odd) {
+      width: 150px;
+      height: 10px;
+    }
+
+    .album-desc-item:nth-child(even) {
+      width: 200px;
+      height: 10px;
+    }
+  }
+
+  .album-songs {
+    flex: 1;
+  }
+
+  .album-heading {
+    width: 300px;
+    height: 25px;
+    margin-bottom: 15px;
   }
 }

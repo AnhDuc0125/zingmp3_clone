@@ -142,12 +142,67 @@ const Skeletion = ({ type }) => {
     </div>
   );
 
+  const AlbumSkeleton = () => (
+    <div className={cx('album-wrapper')}>
+      <div className={cx('album-info')}>
+        <div className={cx('album-thumb')}>
+          <SkeletonEffect />
+        </div>
+        <div className={cx('album-title')}>
+          <SkeletonEffect />
+        </div>
+        <div className={cx('album-desc')}>
+          <div className={cx('album-desc-item')}>
+            <SkeletonEffect />
+          </div>
+          <div className={cx('album-desc-item')}>
+            <SkeletonEffect />
+          </div>
+          <div className={cx('album-desc-item')}>
+            <SkeletonEffect />
+          </div>
+        </div>
+      </div>
+      <div className={cx('album-songs')}>
+        <div className={cx('album-heading')}>
+          <SkeletonEffect />
+        </div>
+        {Array(10)
+          .fill()
+          .map((item, index) => (
+            <div key={index} className={cx('chart-container')}>
+              <div className={cx('music')}>
+                <div className={cx('thumb')}>
+                  <SkeletonEffect />
+                </div>
+                <div className={cx('info')}>
+                  <div className={cx('name')}>
+                    <SkeletonEffect />
+                  </div>
+                  <div className={cx('singer')}>
+                    <SkeletonEffect />
+                  </div>
+                </div>
+              </div>
+              <div className={cx('album')}>
+                <SkeletonEffect />
+              </div>
+              <div className={cx('duration')}>
+                <SkeletonEffect />
+              </div>
+            </div>
+          ))}
+      </div>
+    </div>
+  );
+
   return (
     <div>
       {type === 'feed' && <FeedSkeleton />}
       {type === 'chart' && <ChartSkeleton />}
       {type === 'category' && <CategorySkeleton />}
       {type === 'top100' && <Top100Skeleton />}
+      {type === 'album' && <AlbumSkeleton />}
     </div>
   );
 };
