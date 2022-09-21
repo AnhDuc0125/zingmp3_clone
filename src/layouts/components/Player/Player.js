@@ -11,7 +11,7 @@ const Player = () => {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('playing-song')}>
-        <MusicItem name={'Có Em Chờ'} singer={'MIN'} heightFull />
+        {/* <MusicItem name={'Có Em Chờ'} singer={'MIN'} heightFull /> */}
       </div>
       <div className={cx('controller')}>
         <div className={cx('controller-area')}>

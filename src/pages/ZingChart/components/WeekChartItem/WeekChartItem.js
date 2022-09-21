@@ -3,8 +3,7 @@ import { PlayOutline } from 'iconoir-react';
 
 import styles from './WeekChartItem.module.scss';
 import Button from '~/components/Button';
-import ChartItem from '../ChartItem';
-import { useState } from 'react';
+import MusicItem from '~/components/MusicItem';
 
 const cx = classNames.bind(styles);
 
@@ -27,7 +26,7 @@ const WeekChartItem = ({ data }) => {
       <div className={cx('content')}>
         {data?.items?.map(
           (item, index) =>
-            index < SHOW_NUMBER && <ChartItem key={index} small data={item} rank={index + 1} />
+            index < SHOW_NUMBER && <MusicItem key={index} small data={item} rank={index + 1} />
         )}
       </div>
       <div className={cx('footer')}>

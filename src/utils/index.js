@@ -22,4 +22,19 @@ const getCompactNum = (number) => {
   return compactedNum;
 };
 
-export { getDate, getCompactNum };
+const getDuration = (baseDuration) => {
+  const minute = Math.floor(baseDuration / 60).toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false,
+  });
+
+  const second = (baseDuration - Math.floor(baseDuration / 60) * 60).toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false,
+  });
+
+  const finalDuration = `${minute}: ${second}`;
+  return finalDuration;
+};
+
+export { getDate, getCompactNum, getDuration };

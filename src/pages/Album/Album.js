@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ToolTip from '@tippyjs/react/';
 
 import styles from './Album.module.scss';
 import useSimpleFetch from '~/hooks/useSimpleFetch';
 import Button from '~/components/Button';
 import { Heart, MoreHoriz, PlayOutline } from 'iconoir-react';
-import ChartItem from '../ZingChart/components/ChartItem';
+import MusicItem from '~/components/MusicItem';
 import { getCompactNum, getDate } from '~/utils';
 import Skeleton from '~/components/Skeleton';
 import Image from '~/components/Image';
@@ -76,7 +76,7 @@ const Album = () => {
             )}
             <div className={cx('container')}>
               {album?.song?.items?.map((item) => (
-                <ChartItem key={item.encodeId} data={item} />
+                <MusicItem icon key={item.encodeId} data={item} />
               ))}
             </div>
           </div>

@@ -39,19 +39,19 @@ const PlayerQueue = () => {
       </div>
       <div className={cx('body')}>
         <div className={cx('recently-played')}>
-          {Array(5)
+          {/* {Array(5)
             .fill(null)
             .map((item, index) => (
-              <MusicItem key={index} name={'Có Em Chờ'} singer={'MIN'} />
-            ))}
+               <MusicItem key={index} name={'Có Em Chờ'} singer={'MIN'} /> 
+            ))} */}
         </div>
         <div className={cx('in-queue')}>
           <h3 className={cx('in-queue-title')}>Tiếp theo</h3>
-          {Array(15)
+          {/* {Array(15)
             .fill(null)
             .map((item, index) => (
               <MusicItem key={index} name={'Có Em Chờ'} singer={'MIN'} />
-            ))}
+            ))} */}
         </div>
       </div>
     </div>

@@ -24,31 +24,35 @@ const Skeletion = ({ type }) => {
       </div>
 
       {/* sections */}
-      <div className={cx('section')}>
-        <div className={cx('section-title')}>
-          <SkeletonEffect />
-        </div>
-        <div className={cx('section-content')}>
-          {Array(COUNT_ITEM)
-            .fill()
-            .map((item, index) => (
-              <div key={index} className={cx('section-item')}>
-                <div className={cx('section-item-header')}>
-                  <SkeletonEffect />
-                </div>
-                <div className={cx('section-item-title')}>
-                  <SkeletonEffect />
-                </div>
-                <div className={cx('section-item-desc')}>
-                  <SkeletonEffect />
-                </div>
-                <div className={cx('section-item-desc')}>
-                  <SkeletonEffect />
-                </div>
-              </div>
-            ))}
-        </div>
-      </div>
+      {Array(2)
+        .fill()
+        .map((item) => (
+          <div className={cx('section')}>
+            <div className={cx('section-title')}>
+              <SkeletonEffect />
+            </div>
+            <div className={cx('section-content')}>
+              {Array(COUNT_ITEM)
+                .fill()
+                .map((item, index) => (
+                  <div key={index} className={cx('section-item')}>
+                    <div className={cx('section-item-header')}>
+                      <SkeletonEffect />
+                    </div>
+                    <div className={cx('section-item-title')}>
+                      <SkeletonEffect />
+                    </div>
+                    <div className={cx('section-item-desc')}>
+                      <SkeletonEffect />
+                    </div>
+                    <div className={cx('section-item-desc')}>
+                      <SkeletonEffect />
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        ))}
     </div>
   );
 

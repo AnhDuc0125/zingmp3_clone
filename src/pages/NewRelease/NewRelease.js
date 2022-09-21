@@ -5,7 +5,7 @@ import styles from './NewRelease.module.scss';
 import Button from '~/components/Button';
 import Skeleton from '~/components/Skeleton';
 import useSimpleFetch from '~/hooks/useSimpleFetch';
-import ChartItem from '../ZingChart/components/ChartItem';
+import MusicItem from '~/components/MusicItem';
 
 const cx = classNames.bind(styles);
 
@@ -28,7 +28,7 @@ const NewRelease = () => {
           <div className={cx('content')}>
             {newRelease?.title.length > 0 &&
               newRelease?.items?.map((item, index) => (
-                <ChartItem key={item.encodeId} data={item} rank={index + 1} />
+                <MusicItem key={item.encodeId} data={item} rank={index + 1} />
               ))}
           </div>
         </>

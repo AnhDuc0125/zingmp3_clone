@@ -4,7 +4,7 @@ import { PlayOutline } from 'iconoir-react';
 
 import styles from './ZingChart.module.scss';
 import Button from '~/components/Button/';
-import ChartItem from './components/ChartItem/';
+import MusicItem from '~/components/MusicItem/';
 import WeekChartItem from './components/WeekChartItem';
 import useSimpleFetch from '~/hooks/useSimpleFetch';
 import Skeleton from '~/components/Skeleton';
@@ -31,7 +31,7 @@ const ZingChart = () => {
             {chart?.RTChart &&
               chart?.RTChart?.items?.map(
                 (item, index) =>
-                  index < show && <ChartItem key={item.encodeId} data={item} rank={index + 1} />
+                  index < show && <MusicItem key={item.encodeId} data={item} rank={index + 1} />
               )}
           </div>
           {show === 10 && (
