@@ -19,6 +19,7 @@ const RadioItem = ({ data }) => {
             </span>
           </div>
         </div>
+        <span className={cx('tag')}>live</span>
         <div className={cx('avatar')}>
           <Image src={data?.host?.thumbnail} alt={data?.host?.name} />
         </div>

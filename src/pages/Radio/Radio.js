@@ -2,7 +2,6 @@ import { useEffect, useReducer, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './Radio.module.scss';
-// import useSimpleFetch from '~/hooks/useSimpleFetch';
 import Section from '~/components/Section';
 import RadioItem from '~/components/RadioItem';
 import reducer from './reducer';
@@ -16,8 +15,6 @@ import Skeleton from '~/components/Skeleton';
 const cx = classNames.bind(styles);
 
 const Radio = () => {
-  // const [radio, loading] = useSimpleFetch('radio', {});
-
   const [radio, dispatch] = useReducer(reducer, initialState);
   const [loading, setLoading] = useState(true);
   console.log('Home ~ radio', radio);
@@ -60,9 +57,9 @@ const Radio = () => {
       ) : (
         <>
           {/* Live stream */}
-          <Section>
+          <Section spaceBetween>
             {radio.livestream.items?.map(
-              (item, index) => index < 6 && <RadioItem key={item.encodeId} data={item} />
+              (item, index) => index < 7 && <RadioItem key={item.encodeId} data={item} />
             )}
           </Section>
 

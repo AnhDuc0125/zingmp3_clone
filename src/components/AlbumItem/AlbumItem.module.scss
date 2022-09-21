@@ -1,7 +1,11 @@
 .wrapper {
   width: calc(100% / 5);
-  min-height: 300px;
+  // min-height: 300px;
   // padding: 0 14px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .image {

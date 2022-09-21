@@ -14,7 +14,7 @@
   gap: 28px;
   margin-left: -14px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -38,6 +38,11 @@
   > * {
     width: 100% !important;
   }
+}
+
+.spaceBetween {
+  justify-content: space-between;
+  gap: unset;
 }
 
 .footer-button {

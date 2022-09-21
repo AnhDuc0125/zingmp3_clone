@@ -5,11 +5,12 @@ import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
-const Section = ({ title, children, flex, wrap, grid, cols = 4, onClick }) => {
+const Section = ({ title, children, flex, wrap, grid, cols = 4, spaceBetween, onClick }) => {
   const classes = {
     flex,
     wrap,
     grid,
+    spaceBetween,
   };
 
   const styles = {

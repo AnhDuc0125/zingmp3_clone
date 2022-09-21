@@ -201,7 +201,7 @@ const Skeletion = ({ type }) => {
       {/* Radio Item */}
       <div className={cx('radio')}>
         <div className={cx('radio-content')}>
-          {Array(6)
+          {Array(7)
             .fill()
             .map((item, index) => (
               <div key={index} className={cx('radio-item')}>
