@@ -10,7 +10,7 @@ import MusicItem from '~/components/MusicItem';
 const cx = classNames.bind(styles);
 
 const NewRelease = () => {
-  const [newRelease, loading] = useSimpleFetch('chart/new-release', {});
+  const [newRelease, loading] = useSimpleFetch('chart/new-release');
   console.log('NewRelease ~ newRelease', newRelease);
 
   return (
@@ -28,7 +28,7 @@ const NewRelease = () => {
           <div className={cx('content')}>
             {newRelease?.title.length > 0 &&
               newRelease?.items?.map((item, index) => (
-                <MusicItem key={item.encodeId} data={item} rank={index + 1} />
+                <MusicItem key={item.encodeId} type={'rank'} data={item} rank={index + 1} />
               ))}
           </div>
         </>

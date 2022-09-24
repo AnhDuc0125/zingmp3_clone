@@ -6,10 +6,18 @@ import styles from './Layout.module.scss';
 import Header from '~/layouts/components/Header';
 import Player from './components/Player';
 import PlayerQueue from './components/PlayerQueue';
+import { useState } from 'react';
+import { useCallback } from 'react';
 
 const cx = classNames.bind(styles);
 
 const Layout = ({ children }) => {
+  const [showPlayQueue, setShowPlayQueue] = useState(false);
+
+  const handleSetShow = useCallback(() => {
+    setShowPlayQueue((prev) => !prev);
+  }, []);
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
@@ -20,10 +28,10 @@ const Layout = ({ children }) => {
             {children}
           </main>
         </div>
-        <PlayerQueue />
+        <PlayerQueue show={showPlayQueue} />
       </div>
       <div className={cx('footer')}>
-        <Player />
+        <Player onClick={handleSetShow} show={showPlayQueue} />
       </div>
     </div>
   );

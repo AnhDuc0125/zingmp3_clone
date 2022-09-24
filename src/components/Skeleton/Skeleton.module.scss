@@ -269,3 +269,36 @@
     height: 15px;
   }
 }
+
+.artist-wrapper {
+  .artist-top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .artist-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .artist-name {
+    width: 250px;
+    height: 40px;
+  }
+
+  .artist-desc {
+    width: 500px;
+    height: 10px;
+  }
+
+  .artist-thumb {
+    width: 260px;
+    height: 260px;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .artist-body {
+  }
+}

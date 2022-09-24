@@ -9,7 +9,7 @@ import Skeleton from '~/components/Skeleton';
 const cx = classNames.bind(styles);
 
 const Top100 = () => {
-  const [response, loading] = useSimpleFetch('top100', {});
+  const [response, loading] = useSimpleFetch('top100');
 
   //convert obect --> array
   const top100 = Object.values(response);

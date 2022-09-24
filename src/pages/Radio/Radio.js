@@ -73,8 +73,8 @@ const Radio = () => {
 
           {/* Banner */}
           <Section title={radio.banner?.title}>
-            {radio.banner?.items?.map((item) => (
-              <div className={cx('banner-wrapper')}>
+            {radio.banner?.items?.map((item, index) => (
+              <div key={index} className={cx('banner-wrapper')}>
                 <Image src={item.thumbnail} alt={item.title} />
               </div>
             ))}
@@ -85,7 +85,7 @@ const Radio = () => {
             {radio.category?.items?.map(
               (item, index) =>
                 index < 5 && (
-                  <div className={cx('category-wrapper')}>
+                  <div key={item.id} className={cx('category-wrapper')}>
                     <Image src={item.thumbnail} alt={item.title} />
                   </div>
                 )

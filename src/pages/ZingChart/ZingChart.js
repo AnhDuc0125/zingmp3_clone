@@ -8,12 +8,14 @@ import MusicItem from '~/components/MusicItem/';
 import WeekChartItem from './components/WeekChartItem';
 import useSimpleFetch from '~/hooks/useSimpleFetch';
 import Skeleton from '~/components/Skeleton';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 const ZingChart = () => {
-  const [chart, loading] = useSimpleFetch('chart/home', {});
+  const [chart, loading] = useSimpleFetch('chart/home');
   const [show, setShow] = useState(10);
+  const currentMusic = useSelector((state) => state.music.currentSong);
 
   return (
     <main className={cx('wrapper')}>
@@ -31,7 +33,15 @@ const ZingChart = () => {
             {chart?.RTChart &&
               chart?.RTChart?.items?.map(
                 (item, index) =>
-                  index < show && <MusicItem key={item.encodeId} data={item} rank={index + 1} />
+                  index < show && (
+                    <MusicItem
+                      isPlaying={currentMusic?.encodeId === item?.encodeId}
+                      key={item.encodeId}
+                      data={item}
+                      type={'rank'}
+                      rank={index + 1}
+                    />
+                  )
               )}
           </div>
           {show === 10 && (

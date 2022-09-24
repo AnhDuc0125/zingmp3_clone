@@ -1,7 +1,7 @@
 .wrapper {
   width: 100%;
   height: fit-content;
-  margin-top: calc(var(--header-height) + 20px);
+  padding: 0 var(--main-padding);
 }
 
 .album-info {

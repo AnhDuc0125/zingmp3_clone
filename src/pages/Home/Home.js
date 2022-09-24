@@ -23,7 +23,6 @@ const cx = classNames.bind(styles);
 const Home = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [loading, setLoading] = useState(true);
-  console.log('Home ~ state', state);
 
   useEffect(() => {
     const fetchData = async () => {

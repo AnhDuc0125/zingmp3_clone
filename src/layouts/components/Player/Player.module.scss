@@ -1,11 +1,12 @@
 .wrapper {
   width: 100%;
   height: 100%;
-  padding: 15px 20px;
+  padding: 10px 20px;
   background-color: var(--player-bg);
   border-top: 1px solid var(--light-purple);
   display: flex;
   justify-content: space-between;
+  gap: 150px;
 }
 
 .playing-song {
@@ -20,6 +21,7 @@
 }
 
 .controller-area {
+  margin-top: 5px;
   display: flex;
   justify-content: center;
 }
@@ -40,20 +42,6 @@
   padding: 2px;
   border: 2px solid var(--white);
   border-radius: 999px;
-
-  &.playing {
-    .play-btn {
-      display: none;
-    }
-
-    .pause-btn {
-      display: flex;
-    }
-  }
-
-  .pause-btn {
-    display: none;
-  }
 }
 
 .next {
@@ -62,16 +50,17 @@
 .repeat {
 }
 
+.active {
+  color: var(--purple);
+}
+
 .process {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.current-time {
-}
-
-.process-bar {
+input[type='range'] {
   width: 100%;
   height: 3px;
   border-radius: 5px;
@@ -80,9 +69,16 @@
   &:hover {
     height: 5px;
   }
+
+  &.volume-bar {
+    width: 50%;
+  }
 }
 
-.total-duration {
+.total-duration,
+.current-time {
+  width: 30px;
+  flex-shrink: 0;
 }
 
 .actions {
@@ -118,4 +114,8 @@
 
 .show-playlist {
   padding: 5px;
+
+  &.show {
+    background-color: var(--purple);
+  }
 }

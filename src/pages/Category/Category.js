@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 
 const Category = () => {
   const [show, setShow] = useState(8);
-  const [categories, loading] = useSimpleFetch('category', {});
+  const [categories, loading] = useSimpleFetch('category/');
 
   return (
     <main className={cx('wrapper')}>

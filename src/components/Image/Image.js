@@ -1,6 +1,6 @@
 import placeholderImage from '~/assets/images/placeholder.jpg';
 
-const Image = ({ src = placeholderImage, alt = '', className, ...props }) => {
+const Image = ({ type = 'default', src = placeholderImage, alt = '', className, ...props }) => {
   return <img src={src} alt={alt} className={className} {...props} />;
 };
 

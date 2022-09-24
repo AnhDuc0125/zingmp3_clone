@@ -26,7 +26,9 @@ const WeekChartItem = ({ data }) => {
       <div className={cx('content')}>
         {data?.items?.map(
           (item, index) =>
-            index < SHOW_NUMBER && <MusicItem key={index} small data={item} rank={index + 1} />
+            index < SHOW_NUMBER && (
+              <MusicItem key={index} small data={item} type={'rank'} rank={index + 1} />
+            )
         )}
       </div>
       <div className={cx('footer')}>

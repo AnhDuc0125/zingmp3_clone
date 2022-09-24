@@ -26,8 +26,8 @@ const Skeletion = ({ type }) => {
       {/* sections */}
       {Array(2)
         .fill()
-        .map((item) => (
-          <div className={cx('section')}>
+        .map((item, index) => (
+          <div key={index} className={cx('section')}>
             <div className={cx('section-title')}>
               <SkeletonEffect />
             </div>
@@ -246,6 +246,57 @@ const Skeletion = ({ type }) => {
     </div>
   );
 
+  const ArtistSkeleton = () => (
+    <div className={cx('artist-wrapper')}>
+      <div className={cx('artist-top')}>
+        <div className={cx('artist-info')}>
+          <div className={cx('artist-name')}>
+            <SkeletonEffect />
+          </div>
+          <div className={cx('artist-desc')}>
+            <SkeletonEffect />
+          </div>
+          <div className={cx('artist-desc')}>
+            <SkeletonEffect />
+          </div>
+          <div className={cx('artist-desc')}>
+            <SkeletonEffect />
+          </div>
+        </div>
+        <div className={cx('artist-thumb')}>
+          <SkeletonEffect />
+        </div>
+      </div>
+      <div className={cx('artist-body')}>
+        <div className={cx('section')}>
+          <div className={cx('section-title')}>
+            <SkeletonEffect />
+          </div>
+          <div className={cx('section-content')}>
+            {Array(COUNT_ITEM)
+              .fill()
+              .map((item, index) => (
+                <div key={index} className={cx('section-item')}>
+                  <div className={cx('section-item-header')}>
+                    <SkeletonEffect />
+                  </div>
+                  <div className={cx('section-item-title')}>
+                    <SkeletonEffect />
+                  </div>
+                  <div className={cx('section-item-desc')}>
+                    <SkeletonEffect />
+                  </div>
+                  <div className={cx('section-item-desc')}>
+                    <SkeletonEffect />
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div>
       {type === 'feed' && <FeedSkeleton />}
@@ -254,6 +305,7 @@ const Skeletion = ({ type }) => {
       {type === 'top100' && <Top100Skeleton />}
       {type === 'album' && <AlbumSkeleton />}
       {type === 'radio' && <RadioSkeleton />}
+      {type === 'artist' && <ArtistSkeleton />}
     </div>
   );
 };

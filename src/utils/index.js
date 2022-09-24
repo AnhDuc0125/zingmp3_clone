@@ -33,7 +33,7 @@ const getDuration = (baseDuration) => {
     useGrouping: false,
   });
 
-  const finalDuration = `${minute}: ${second}`;
+  const finalDuration = `${minute}:${second}`;
   return finalDuration;
 };
 

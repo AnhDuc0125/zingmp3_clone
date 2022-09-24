@@ -9,6 +9,7 @@
   height: calc(100vh - var(--player-height));
   display: flex;
   background-color: green;
+  position: relative;
 }
 
 .footer {
@@ -26,5 +27,6 @@
 
 .main {
   width: 100%;
-  padding: 0 var(--main-padding);
+  display: flex;
+  flex-direction: column;
 }

@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { useParams } from 'react-router-dom';
 import ToolTip from '@tippyjs/react/';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './Album.module.scss';
 import useSimpleFetch from '~/hooks/useSimpleFetch';
@@ -11,13 +13,27 @@ import { getCompactNum, getDate } from '~/utils';
 import Skeleton from '~/components/Skeleton';
 import Image from '~/components/Image';
 import ArtistLink from '~/components/ArtistLink';
+import { setPlaylistInQueue } from '~/redux/musicSlice';
 
 const cx = classNames.bind(styles);
 
 const Album = () => {
+  const dispatch = useDispatch();
+
+  const currentMusic = useSelector((state) => state.music.currentSong);
   const { id } = useParams();
-  const [album, loading] = useSimpleFetch(`playlist/${id}`);
-  console.log(album);
+  const [album, loading] = useSimpleFetch('playlist/', id);
+
+  // Khi người dùng chọn album -> thêm danh sách bài hát của album vào queue
+  useEffect(() => {
+    if (album.song?.items) {
+      const validSongs = album.song?.items?.filter((item) => item.isWorldWide);
+      if (validSongs) {
+        dispatch(setPlaylistInQueue(validSongs));
+      }
+    }
+  }, [album, dispatch]);
+
   return (
     <div className={cx('wrapper')}>
       {loading ? (
@@ -76,7 +92,12 @@ const Album = () => {
             )}
             <div className={cx('container')}>
               {album?.song?.items?.map((item) => (
-                <MusicItem icon key={item.encodeId} data={item} />
+                <MusicItem
+                  icon
+                  isPlaying={currentMusic?.encodeId === item?.encodeId}
+                  key={item.encodeId}
+                  data={item}
+                />
               ))}
             </div>
           </div>

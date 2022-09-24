@@ -6,6 +6,12 @@
   background-color: var(--main-bg);
   border-left: 1px solid var(--light-purple);
   overflow-y: overlay;
+  transition: 800ms;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
 }
 
 .header {
@@ -60,6 +66,11 @@
   font-size: 1.8rem;
 }
 
+.body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .recently-played {
 }
 
@@ -73,6 +84,10 @@
 
 @media screen and (max-width: 1589px) {
   .wrapper {
-    display: none;
+    transform: translateX(100%);
+  }
+
+  .wrapper.show {
+    transform: translateX(0);
   }
 }

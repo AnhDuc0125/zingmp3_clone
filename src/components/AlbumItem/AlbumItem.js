@@ -5,6 +5,7 @@ import ToolTip from '@tippyjs/react/';
 import styles from './AlbumItem.module.scss';
 import { Link } from 'react-router-dom';
 import Image from '~/components/Image';
+import useSimpleFetch from '~/hooks/useSimpleFetch';
 
 const cx = classNames.bind(styles);
 

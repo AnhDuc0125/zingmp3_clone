@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import radioReducer from './radioSlice';
+import musicReducer from './musicSlice';
 
 const store = configureStore({
   reducer: {
-    radio: radioReducer,
+    music: musicReducer,
   },
 });
 

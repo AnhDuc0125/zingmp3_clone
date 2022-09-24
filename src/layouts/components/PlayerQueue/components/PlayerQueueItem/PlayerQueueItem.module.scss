@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: space-between;
   transition: 200ms;
+  position: relative;
   cursor: pointer;
 
   + .wrapper {
@@ -20,49 +21,19 @@
   &:hover .play-icon {
     opacity: 1;
   }
-
-  &:nth-child(1) .rank-num {
-    -webkit-text-stroke: 1px var(--blue);
-  }
-
-  &:nth-child(2) .rank-num {
-    -webkit-text-stroke: 1px var(--green);
-  }
-
-  &:nth-child(3) .rank-num {
-    -webkit-text-stroke: 1px var(--red);
-  }
 }
 
-.player {
+.music {
   height: 100%;
-  padding: 0;
 
-  &:hover {
-    background-color: unset;
-
-    .play-icon {
-      opacity: 0;
-    }
+  .thumb {
+    flex-shrink: 0;
+    width: 69px;
+    height: 69px;
   }
 
-  .music {
-    height: 100%;
-
-    .thumb {
-      width: 69px;
-      height: 69px;
-    }
-
-    .info {
-      margin: auto 0;
-    }
-  }
-}
-
-.default {
-  .album {
-    display: none;
+  .info {
+    margin: auto 0;
   }
 }
 
@@ -75,28 +46,6 @@
   .icon {
     font-size: 1.3rem;
     margin-right: 10px;
-    display: flex;
-  }
-
-  .rank {
-    display: flex;
-    align-items: center;
-  }
-
-  .rank-num {
-    width: 60px;
-    font-size: 3.2rem;
-    font-weight: 900;
-    line-height: 1;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--white);
-  }
-
-  .status {
-    font-size: 1.6rem;
-    margin-right: 15px;
     display: flex;
   }
 
@@ -147,40 +96,32 @@
   }
 }
 
-.album {
-  width: 40%;
-  font-size: 1.2rem;
-  text-transform: capitalize;
-  text-align: left;
-}
-
-.duration {
-  width: 10%;
-  font-size: 1.2rem;
-  text-align: right;
-}
-
-.small {
-  height: 60px;
-  padding: 10px 5px;
-
-  .status {
-    margin-right: 10px;
-  }
-
-  .album {
-    display: none;
-  }
-
-  .rank-num {
-    width: 30px;
-  }
-
-  .duration {
-    width: 15%;
-  }
+.playing {
+  background-color: var(--purple);
 
   &:hover {
-    background-color: rgba(white, 0.05);
+    background-color: var(--purple);
+  }
+
+  a {
+    color: rgba(white, 0.6);
+
+    &:hover {
+      color: rgba(white, 0.6);
+    }
+  }
+}
+
+.disabled-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(black, 0.5);
+}
+
+.loading {
+  pointer-events: none;
+  .disabled-overlay {
+    display: block;
   }
 }
