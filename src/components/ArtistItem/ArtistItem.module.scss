@@ -10,6 +10,10 @@
   display: flex;
   overflow: hidden;
   position: relative;
+
+  &:hover img {
+    transform: scale(110%);
+  }
 }
 
 .thumbnail {

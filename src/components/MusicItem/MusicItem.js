@@ -32,6 +32,7 @@ const MusicItem = ({
   player,
   isPlaying,
   indexOfSong,
+  isWorldWide,
 }) => {
   const dispatch = useDispatch();
   // const [src, loading] = useSimpleFetch('song/', data?.encodeId);
@@ -69,7 +70,9 @@ const MusicItem = ({
           </span>
         </div>
         <div className={cx('info')}>
-          <span className={cx('name')}>{data?.title}</span>
+          <div className={cx('name')}>
+            {data?.title} {!isWorldWide && <span className={cx('vip-tag')}>VIP</span>}
+          </div>
           <p className={cx('singer')}>
             {data?.artists?.map((artist) => (
               <ArtistLink
@@ -84,7 +87,7 @@ const MusicItem = ({
         </div>
       </div>
       <div className={cx('album')}>{data?.album?.title}</div>
-      {type !== 'default' && <div className={cx('duration')}>{getDuration(data.duration)}</div>}
+      {type === 'default' && <div className={cx('duration')}>{getDuration(data?.duration)}</div>}
     </div>
   );
 };

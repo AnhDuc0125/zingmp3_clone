@@ -2,12 +2,14 @@
   width: 100%;
   height: fit-content;
   padding: 0 var(--main-padding);
+  overflow-y: overlay;
+  overflow-x: hidden;
 }
 
 .album-info {
   width: 300px;
   position: sticky;
-  top: 90px;
+  top: 0;
   float: left;
 
   .thumb {
@@ -104,5 +106,28 @@
   }
 
   .container {
+  }
+
+  .table-heading {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--gray-text);
+    text-transform: uppercase;
+    padding: 10px 0;
+    display: flex;
+
+    .song-name {
+      flex: 1;
+      margin-left: 40px;
+    }
+
+    .song-album {
+      width: 40%;
+    }
+
+    .song-duration {
+      width: 10%;
+      text-align: right;
+    }
   }
 }

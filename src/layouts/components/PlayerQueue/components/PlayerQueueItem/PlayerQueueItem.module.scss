@@ -121,7 +121,34 @@
 
 .loading {
   pointer-events: none;
+
   .disabled-overlay {
     display: block;
+  }
+}
+
+.loading-icon {
+  background-color: rgba(black, 0.5);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid white;
+    border-top-color: transparent;
+    box-sizing: content-box;
+    transition: 200ms;
+    animation: spinner 2s linear infinite;
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
   }
 }

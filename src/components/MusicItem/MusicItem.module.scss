@@ -46,6 +46,11 @@
     }
   }
 
+  .album,
+  .duration {
+    display: none;
+  }
+
   .music {
     height: 100%;
 
@@ -61,9 +66,9 @@
 }
 
 .default {
-  .album {
-    display: none;
-  }
+  // .album {
+  //   display: none;
+  // }
 }
 
 .music {
@@ -140,6 +145,9 @@
     font-size: 1.4rem;
     font-weight: 500;
     text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .singer {
@@ -157,6 +165,7 @@
 .duration {
   width: 10%;
   font-size: 1.2rem;
+  font-weight: 500;
   text-align: right;
 }
 
@@ -183,4 +192,15 @@
   &:hover {
     background-color: rgba(white, 0.05);
   }
+}
+
+.vip-tag {
+  color: var(--black);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 1px 10px;
+  background-color: var(--yellow);
+  display: inline-flex;
 }

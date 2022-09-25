@@ -51,7 +51,12 @@ const Player = ({ onClick, show }) => {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('playing-song')}>
-        <MusicItem player data={currentSong} className={cx('music-item')} />
+        <MusicItem
+          player
+          data={currentSong}
+          isWorldWide={currentSong?.isWorldWide}
+          className={cx('music-item')}
+        />
       </div>
       <div className={cx('controller')}>
         <div className={cx('controller-area')}>
@@ -118,7 +123,7 @@ const Player = ({ onClick, show }) => {
             min="0"
             max="100"
             className={cx('process-bar')}
-            onChange={(e) => console.log(e.target.value)}
+            // onChange={(e) => setCurrentTime((currentSong?.duration * e.target.value) / 100)}
           />
           <span className={cx('total-duration')}>
             {currentSong ? getDuration(currentSong?.duration) : '00:00'}

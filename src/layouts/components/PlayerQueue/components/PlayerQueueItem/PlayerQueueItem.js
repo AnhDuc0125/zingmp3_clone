@@ -7,21 +7,17 @@ import Image from '~/components/Image';
 import { setCurrentSong, setSrcCurrentSong } from '~/redux/musicSlice';
 import ArtistLink from '~/components/ArtistLink';
 import useSimpleFetch from '~/hooks/useSimpleFetch';
-import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
-
-const handlePlayMusic = (dispatch, { indexOfSong, srcSong }) => {
-  dispatch(setCurrentSong(indexOfSong));
-};
 
 const PlayerQueueItem = ({ data, isPlaying, indexOfSong }) => {
   const dispatch = useDispatch();
   const [srcSong, loading] = useSimpleFetch('song/', data?.encodeId, null);
 
-  useEffect(() => {
-    isPlaying && dispatch(setSrcCurrentSong(srcSong[128]));
-  }, [isPlaying, dispatch, srcSong]);
+  const handlePlayMusic = () => {
+    dispatch(setCurrentSong(indexOfSong));
+    dispatch(setSrcCurrentSong(srcSong[128]));
+  };
 
   const classes = {
     playing: isPlaying,
@@ -29,10 +25,7 @@ const PlayerQueueItem = ({ data, isPlaying, indexOfSong }) => {
   };
 
   return (
-    <div
-      className={cx('wrapper', { ...classes })}
-      onClick={() => handlePlayMusic(dispatch, { indexOfSong, srcSong: srcSong[128] })}
-    >
+    <div className={cx('wrapper', { ...classes })} onClick={handlePlayMusic}>
       <div className={cx('disabled-overlay')}></div>
       <div className={cx('music')}>
         <div className={cx('thumb')}>
@@ -40,6 +33,11 @@ const PlayerQueueItem = ({ data, isPlaying, indexOfSong }) => {
           <span className={cx('play-icon')}>
             <PlayOutline fill="white" color="white" />
           </span>
+          {loading && (
+            <span className={cx('loading-icon')}>
+              <span></span>
+            </span>
+          )}
         </div>
         <div className={cx('info')}>
           <span className={cx('name')}>{data?.title}</span>

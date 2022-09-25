@@ -91,10 +91,16 @@ const Album = () => {
               </div>
             )}
             <div className={cx('container')}>
+              <div className={cx('table-heading')}>
+                <span className={cx('song-name')}>Bài hát</span>
+                <span className={cx('song-album')}>Album</span>
+                <span className={cx('song-duration')}>Thời gian</span>
+              </div>
               {album?.song?.items?.map((item) => (
                 <MusicItem
                   icon
                   isPlaying={currentMusic?.encodeId === item?.encodeId}
+                  isWorldWide={item.isWorldWide}
                   key={item.encodeId}
                   data={item}
                 />
