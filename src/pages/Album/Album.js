@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { useParams } from 'react-router-dom';
 import ToolTip from '@tippyjs/react/';
@@ -13,7 +13,7 @@ import { getCompactNum, getDate } from '~/utils';
 import Skeleton from '~/components/Skeleton';
 import Image from '~/components/Image';
 import ArtistLink from '~/components/ArtistLink';
-import { setPlaylistInQueue } from '~/redux/musicSlice';
+import { setCurrentSong, setPlaylistInQueue } from '~/redux/musicSlice';
 
 const cx = classNames.bind(styles);
 
@@ -24,15 +24,12 @@ const Album = () => {
   const { id } = useParams();
   const [album, loading] = useSimpleFetch('playlist/', id);
 
-  // Khi người dùng chọn album -> thêm danh sách bài hát của album vào queue
-  useEffect(() => {
+  const handleSetPlaylist = (indexOfSong) => {
     if (album.song?.items) {
-      const validSongs = album.song?.items?.filter((item) => item.isWorldWide);
-      if (validSongs) {
-        dispatch(setPlaylistInQueue(validSongs));
-      }
+      dispatch(setPlaylistInQueue(album.song?.items));
+      dispatch(setCurrentSong(indexOfSong));
     }
-  }, [album, dispatch]);
+  };
 
   return (
     <div className={cx('wrapper')}>
@@ -41,7 +38,7 @@ const Album = () => {
       ) : (
         <>
           <div className={cx('album-info')}>
-            <div className={cx('thumb')}>
+            <div className={cx('thumb')} onClick={() => handleSetPlaylist(0)}>
               <Image src={album?.thumbnailM} alt={album?.title} />
               <div className={cx('overlay')}>
                 <span className={cx('play-btn')}>
@@ -96,13 +93,16 @@ const Album = () => {
                 <span className={cx('song-album')}>Album</span>
                 <span className={cx('song-duration')}>Thời gian</span>
               </div>
-              {album?.song?.items?.map((item) => (
+              {album?.song?.items?.map((item, index) => (
                 <MusicItem
                   icon
                   isPlaying={currentMusic?.encodeId === item?.encodeId}
                   isWorldWide={item.isWorldWide}
                   key={item.encodeId}
                   data={item}
+                  onClick={() => {
+                    handleSetPlaylist(index);
+                  }}
                 />
               ))}
             </div>

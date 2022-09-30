@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { PlayOutline } from 'iconoir-react';
 import { useDispatch } from 'react-redux';
@@ -18,6 +19,10 @@ const PlayerQueueItem = ({ data, isPlaying, indexOfSong }) => {
     dispatch(setCurrentSong(indexOfSong));
     dispatch(setSrcCurrentSong(srcSong[128]));
   };
+
+  useEffect(() => {
+    isPlaying && srcSong && dispatch(setSrcCurrentSong(srcSong[128]));
+  }, [isPlaying, dispatch, srcSong]);
 
   const classes = {
     playing: isPlaying,

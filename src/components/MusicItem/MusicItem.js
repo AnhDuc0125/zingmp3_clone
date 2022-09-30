@@ -33,8 +33,9 @@ const MusicItem = ({
   isPlaying,
   indexOfSong,
   isWorldWide,
+  ...props
 }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const [src, loading] = useSimpleFetch('song/', data?.encodeId);
 
   const classes = {
@@ -43,10 +44,12 @@ const MusicItem = ({
     [type]: type,
     [className]: className,
     playing: isPlaying,
+    vip: !isWorldWide,
   };
   return (
     <div
       className={cx('wrapper', { ...classes })}
+      {...props}
       // onClick={() => handlePlayMusic(dispatch, { ...data, indexOfSong, src: src[128] })}
     >
       <div className={cx('music')}>

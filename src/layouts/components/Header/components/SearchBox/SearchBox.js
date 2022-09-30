@@ -15,27 +15,38 @@ const SearchBox = () => {
   const [searchValue, setSearchValue] = useState('');
   const searchKeyword = useDebounce(searchValue);
   const [isFocus, setIsFocus] = useState(false);
-
   const [searchResult, loading] = useSimpleFetch('search?keyword=', searchKeyword);
-  console.log('SearchBox ~ searchResult', searchResult);
 
   return (
     <Tippy
       visible={isFocus}
-      offset={[0, 0]}
       interactive
+      offset={[0, 0]}
       placement={'bottom'}
-      render={(attrs) => (
-        <PopperWrapper {...attrs} className={cx('search-tippy')}>
-          <h3 className={cx('heading')}>Nghệ sĩ</h3>
-          {searchResult?.artists?.map(
-            (artist, index) =>
-              index < 3 && <SearchItem key={artist.encodeId} type={'artist'} data={artist} />
+      render={() => (
+        <PopperWrapper className={cx('search-tippy')}>
+          {loading ? (
+            searchKeyword && <div className={cx('loading')}></div>
+          ) : (
+            <>
+              <h3 className={cx('heading')}>Nghệ sĩ</h3>
+              {searchResult?.artists?.map(
+                (artist, index) =>
+                  index < 3 && (
+                    <SearchItem
+                      key={artist.id}
+                      type={'artist'}
+                      data={artist}
+                      onMouseDown={(e) => e.target.click()}
+                    />
+                  )
+              )}
+              <h3 className={cx('heading', 'separate')}>Bài hát</h3>
+              {searchResult?.songs?.map((song) => (
+                <SearchItem key={song.encodeId} data={song} />
+              ))}
+            </>
           )}
-          <h3 className={cx('heading', 'separate')}>Bài hát</h3>
-          {searchResult?.songs?.map((song) => (
-            <SearchItem key={song.encodeId} data={song} />
-          ))}
         </PopperWrapper>
       )}
     >

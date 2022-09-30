@@ -75,7 +75,10 @@ const Player = ({ onClick, show }) => {
               circled
               size={'26px'}
               className={cx('prev')}
-              onClick={() => dispatch(prevSong())}
+              onClick={() => {
+                dispatch(prevSong(isShuffle));
+                setIsPlaying(true);
+              }}
             >
               <Icon.SkipPrevOutline fill="white" />
             </Button>
@@ -99,7 +102,10 @@ const Player = ({ onClick, show }) => {
               circled
               size={'26px'}
               className={cx('next')}
-              onClick={() => dispatch(nextSong())}
+              onClick={() => {
+                dispatch(nextSong(isShuffle));
+                setIsPlaying(true);
+              }}
             >
               <Icon.SkipNextOutline fill="white" />
             </Button>

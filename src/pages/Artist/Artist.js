@@ -37,7 +37,7 @@ const Artist = () => {
                 <Button outline transparent large>
                   <span className={cx('btn-content')}>
                     QUAN TÂM <span>&middot;</span>{' '}
-                    {artist.totalFollow && getCompactNum(artist?.totalFollow)}
+                    {artist?.totalFollow && getCompactNum(artist?.totalFollow)}
                   </span>
                 </Button>
               </div>
@@ -64,7 +64,7 @@ const Artist = () => {
               (section, index) =>
                 index !== 0 && (
                   <Section grid cols={5} key={index} title={section.title}>
-                    {section.items.map((item, index) => {
+                    {section?.items?.map((item, index) => {
                       return <AlbumItem key={item.encodeId || index} data={item} />;
                     })}
                   </Section>

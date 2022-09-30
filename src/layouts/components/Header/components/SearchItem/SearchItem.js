@@ -8,10 +8,10 @@ import { getCompactNum } from '~/utils';
 
 const cx = classNames.bind(styles);
 
-const SearchItem = ({ data, type = 'song' }) => {
+const SearchItem = ({ data, type = 'song', ...props }) => {
   const ArtistSearchItem = () => {
     return (
-      <Link to={`/artist/${data.alias}`} className={cx('wrapper', 'artist')}>
+      <Link to={`/artist/${data.alias}`} className={cx('wrapper', 'artist')} {...props}>
         <div className={cx('thumb')}>
           <Image src={data.thumbnailM} alt={data.name}></Image>
         </div>
@@ -27,7 +27,7 @@ const SearchItem = ({ data, type = 'song' }) => {
 
   const SongSearchItem = () => {
     return (
-      <div className={cx('wrapper', 'song')}>
+      <div className={cx('wrapper', 'song')} {...props}>
         <div className={cx('thumb')}>
           <Image src={data.thumbnailM} alt={data.title}></Image>
           <div className={cx('overlay')}>

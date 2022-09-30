@@ -16,6 +16,7 @@
     border-radius: 8px;
     overflow: hidden;
     position: relative;
+    transition: 200ms;
     cursor: pointer;
 
     &:hover img {
@@ -129,5 +130,22 @@
       width: 10%;
       text-align: right;
     }
+  }
+}
+
+.playing {
+  &.thumb {
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  img {
+    animation: spinner 5s linear infinite;
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
   }
 }

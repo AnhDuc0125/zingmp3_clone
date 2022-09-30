@@ -45,3 +45,19 @@
     border-top: 1px solid var(--alpha-purple);
   }
 }
+
+.loading {
+  width: 20px;
+  height: 20px;
+  margin: 5px auto;
+  border: 2px solid white;
+  border-radius: 50%;
+  border-right-color: transparent;
+  animation: spinner linear 2s infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

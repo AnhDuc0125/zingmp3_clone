@@ -120,22 +120,3 @@ input[type='range'] {
     background-color: var(--purple);
   }
 }
-
-input[type='range'] {
-  -webkit-appearance: none;
-
-  &:hover {
-    &::-webkit-slider-thumb {
-      width: 12px;
-      height: 12px;
-    }
-  }
-
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 50%;
-    background: var(--white);
-    cursor: pointer;
-  }
-}
